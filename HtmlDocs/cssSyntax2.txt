@@ -1,0 +1,895 @@
+CSS Syntax Part 2
+--------------------------------------------------------------------------------------------------------------------------------
+	Font - the old way
+
+		Before looking at how we define font properties with CSS, we'll take a look at how it's done with plain-old HTML. In 		
+		HTML, we define the font name (i.e, face in HTML, family in CSS) and the font size with the <font> tag, like so:
+
+		Syntax
+
+			<font face="list of font names" size="size">
+
+		However, the <font> tag has been deprecated, meaning that it is no longer part of the HTML specification, and although 	
+		browsers still support it, we strongly recommend that you never use it. Instead you should use CSS as we'll see in this 
+		lesson.
+		
+		Bold and Italic
+
+			In HTML, you can make text bold and italic with the <b> and <i> tags. Although these tags aren't deprecated, they 	
+			should be used sparingly. Most often CSS should be used for bolding and italicizing text.
+
+			For more information on the <b> and <i> tags, see Using <b> and <i> elements.			--------------------------------------------------------------------------------------------------------------------------------
+	Font-family
+	
+		The font-family property is used in CSS to specify the font name to apply to an element. You can specify by font name or 		font category.
+
+		Specifying by Font Name
+
+			When you specify a font by font name, the browser will look for the named font on the end user's computer. If it 		
+			finds it, the font will be displayed accordingly. For example, the following rule would make the font of all <p> 
+			tags Arial.
+
+				p { font-family: Arial }
+
+			If the Arial font were not found on the end user's computer, the browser would display a default font. If you are 
+			concerned that the font name you want to use might not be found on a user's computer, you can provide a list of 
+			options.
+
+				p { font-family: Arial, Helvetica }  <---Embedded/External Style Sheet
+				
+				<div style="font-family: Arial, Helvetica, sans-serif"> </div>  <----Inline Style
+
+			In this case, the browser will first look for Arial. If it doesn't find Arial, it will then look for Helvetica.
+
+		Specifying Font by Category
+
+			When you specify a font by category, the browser will use the font the user's computer specifies for that category. 	
+			For example, for monospace, the computer might specify Courier. The font family categories are listed below.
+
+    			cursive
+    			fantasy
+    			monospace
+    			sans-serif
+    			serif
+
+			To be extra safe, designers often specify a couple specific options followed by a font family category, like so:
+
+				p { font-family: Arial, Helvetica, sans-serif}
+
+			This way, if neither Arial nor Helvetica is found, the browser at least knows to use some sans-serif font.
+
+			The following code sample illustrates how font-family works.
+
+			Code Sample: Fonts/Demos/FontFamily.html
+
+			A survey of the most common fonts found on operating systems can be found at 
+			
+				http://www.codestyle.org/css/font-family. <----Link not working.
+--------------------------------------------------------------------------------------------------------------------------------
+	Font-size
+
+		One of the nicest benefits of CSS is the precise control it gives designers over the font size. While HTML limits you to 		seven different relative font size, CSS gives you the ability to specify exactly how big or small you want text to 		
+		appear. You literally have infinite control.
+
+		Font-size Units
+
+			All the units of measurement can be used. The following screenshot illustrates the relative size of different units.
+			(webucator)
+			
+		Relative Font-size Terms
+
+			In addition, font size can be defined using the following relative terms.
+
+    			xx-large
+    			x-large
+    			large
+    			medium
+    			small
+    			x-small
+    			xx-small
+    			smaller
+    			larger
+
+		The terms xx-small to xx-large work similarly to font sizes 1 through 7 in HTML, though they don't match up exactly. The 		terms smaller and larger change the font size of an element relative to its parent element's font size. The following 	
+		code illustrates this.
+		
+			Code Sample: Fonts/Demos/FontSize.html
+
+		Best Practices
+	
+			Most experts agree that font size should be defined in relative units (e.g, em or %) or in terms (e.g, large, small, 			etc.). This is because absolute font sizes can make pages inaccessible to people who have difficulty seeing. In most 			browsers, a user can change the size that the text appears. In Internet Explorer 8 or earlier, this is done using 		
+			the View menu as shown in the screenshot below. (webucator)
+
+			However, changing this setting will have no effect on font sizes defined in absolute units. To illustrate this, open 			Fonts/Demos/FontSizeCompared.html in Internet Explorer 8 or earlier and change the Text Size setting by selecting 		
+			Text Size under the View menu. You will notice that, in the table with the caption "Font-size Defined in Units," 		
+			only the fonts using em, ex, and percentage (%) change size.
+
+			All the fonts using relative font size terms change size.
+
+			Unfortunately, there is a downside to using relatively defined font sizes and that is that you have less control 
+			over design. This can cause text to wrap when you don't want it to or table cells to expand beyond what you had 
+			intended.
+--------------------------------------------------------------------------------------------------------------------------------
+	Font-style
+
+		Currently, the only use for font-style is to make text italic. The values are listed below.
+
+    		normal
+    		italic
+    		oblique
+
+		However, italic and oblique are displayed in the same way. Since italic has better support, you should use it.
+
+	Font-variant
+
+		Currently, the only use for font-variant is to turn lowercase letters into small caps. The values are listed below.
+
+    	normal
+    	small-caps
+
+	Font-weight
+
+		The weight of a font determines how thick (or bold) it is. Possible values are:
+
+    		100
+    		200
+    		300
+    		400
+    		500
+    		600
+    		700
+    		800
+    		900
+    		bold
+    		bolder
+    		lighter
+    		normal
+
+		The numeric values are used for fonts that can have many different degrees of boldness. Most fonts, however, are either 	
+		bold or normal (not bold).
+--------------------------------------------------------------------------------------------------------------------------------
+	Letter-spacing
+
+		The letter-spacing property is used to specify the amount of space between letters. The amount indicated is in addition 		
+		to the default spacing. The amount is specified in units. For example:
+
+			<div style="letter-spacing:1em">It's a wide wide word!</div>
+
+	Word-spacing
+
+		The word-spacing property is used to specify the amount of space between words. The amount indicated is in addition to 
+		the default spacing. The amount is specified in units. For example:
+
+			<div style="word-spacing:1em">It's a wide wide sentence!</div>
+			
+	Line-height
+
+		The line-height property is used to specify the amount of vertical space between lines of text. The line-height can be 
+		specified in number of units, percentage, or with a multiplier.
+
+	The following code sample shows the effects of letter-spacing, word-spacing, and line-height.
+
+		Code Sample: CssText/Demos/SpacingAndLineHeight.html
+
+		See <a href="LineHeight.html">LineHeight.html</a> for another demo of line-height.
+
+	The above code will render the following in FireFox (note that different browsers might render CSS differently, so it's 	
+	always good to test your styling on the major web browsers such as FireFox, Google Chrome, and Internet Explorer): 	
+	(webucator)
+--------------------------------------------------------------------------------------------------------------------------------
+	Text-align
+
+		The text-align property is used to specify how inline content should be aligned within a block. The values are listed 
+		below.
+
+    		left
+    		right
+    		center
+    		justify
+
+	Text-decoration
+
+		The text-decoration property is used to add effects to text, such as underlines and line-throughs. The values are listed 		below.
+
+    		none
+    		underline
+    		overline
+    		line-through
+    		blink
+
+		The none value of the text-decoration property can be used to remove the underline from links, as shown below.
+
+			<a href="http://www.webucator.com" style="text-decoration:none">Webucator</a>
+
+	Text-indent
+	
+		The text-indent property is used to indent (or outdent) the first line of a block of text. The value can be specified in 		number of units or in percentage of the width of the containing block.
+
+		The following code sample shows the effects of text-align, text-decoration, and text-indent.
+
+			Code Sample: CssText/Demos/AlignDecorationAndIndent.html
+--------------------------------------------------------------------------------------------------------------------------------
+	Text-transform
+
+		The text-transform property is used to change the capitalization of text. The values are listed below.
+
+    		none
+    		capitalize
+    		uppercase
+    		lowercase
+
+		The following code sample shows the effects text-transform.
+
+			Code Sample: CssText/Demos/TextTransform.html
+--------------------------------------------------------------------------------------------------------------------------------
+	Vertical-align
+
+		The vertical-align property is used to indicate how inline content should be aligned vertically relative to sibling 		
+		inline content. The values are listed below.
+
+    		bottom
+    		middle
+    		top
+    		text-bottom
+    		baseline
+    		text-top
+    		sub
+    		super
+
+		The following code sample shows the effects vertical-align.
+
+			Code Sample: CssText/Demos/VerticalAlign.html
+--------------------------------------------------------------------------------------------------------------------------------
+	White-space
+
+		The white-space property determines how sequences of whitespace are displayed. The following table shows the values and 	
+		their effects.
+		
+											white-space Values
+
+		Property	 	Collapses Series of
+	 					Spaces and/or Tabs in Code 	Collapses Line Breaks in Code 	Wraps to Fit Containing Box
+					
+		normal 			Yes											 	Yes							 	Yes
+		pre 			No											 	No							 	No
+		nowrap 			Yes											 	Yes							 	No
+
+		The following code sample shows the effects white-space. (webucator)
+--------------------------------------------------------------------------------------------------------------------------------
+		About Color Values
+
+			Color values can be specified using several ways.
+
+			Color Names
+
+				There are 17 keyword color names that are specified in CSS2. The official W3C color keywords list can be found 
+				at www.w3.org. Modern browsers support many additional color names - everything from papayawhip to darkorchid.
+	
+					<div style="color: red">This will be red.</div>
+
+			Hexadecimal Color Values
+
+				Hexadecimal color values take the format #rrggbb, where rr is the amount of red in the color, gg is the amount 
+				of green in the color, and bb is the amount of blue in the color.
+
+					<div style="color: #ff0000">This will also be red.</div>
+
+			Short Hexadecimal Color Values
+
+				Hexadecimal color values can be abbreviated when a color is represented by three pairs of hexadecimal 
+				characters. For example, with #ff6600, you can remove one character from each pair. The shorthand color values 
+				take the format #rgb, where r is the amount of red, g is the amount of green in the color, and b is the amount 
+				of blue. For example, #f60 is the same as #ff6600.
+
+				Syntax
+
+					selector {color: #f60;}
+
+			Functional Notation
+
+				Functional notation takes the format rgb(n,n,n), where n is a number between 0 and 255 or percentage between 0% 
+				and 100%.
+				
+					<div style="color: rgb(255,0,0)">This will be red.</div>
+					<div style="color: rgb(100%,0%,0%)">This will also be red.</div>
+
+			Recommendation
+
+				Our recommendation is to use three-digit hexadecimal notation (i.e, #rgb) when you can get the color you want 		
+				and to use the six-digit hexadecimal notation (i.e, #rrggbb) when you need to define the color more granularly.
+
+			Color
+
+				As you have seen in the examples above, the color property is used to set the foreground color of an element.
+
+					Code Sample: BackgroundsAndColors/Demos/Color.html
+					
+			Background-color
+
+				The background-color property is used to specify the background color of an element. It can be applied to block 		
+				elements and inline elements.
+
+				Syntax
+
+					selector {background-color:color;}
+
+					Code Sample: BackgroundsAndColors/Demos/BackgroundColor.html
+--------------------------------------------------------------------------------------------------------------------------------
+	Background-image
+	
+		Examples of properties associated with background images are shown in BackgroundsAndColors/Demos/BackgroundImage.html, 	
+		which is listed at the end of this section.
+
+		The background-image property is used to specify the background image of an element. It can be applied to block elements 		and inline elements.
+
+			selector {background-image:url(url);}
+
+	Background-repeat
+
+		The background-repeat property is used with background-image to specify whether and how a background image should 
+		repeat. Possible values are listed below.
+
+    		no-repeat - does not tile
+    		repeat-x - tiles horizontally
+    		repeat-y - tiles vertically
+
+			Syntax
+
+				selector {
+    
+					background-image:url(url goes here);
+    				background-repeat:value;
+				}
+				
+	Background-attachment
+
+		The background-attachment property is used with background-image to specify whether a background image should scroll as 
+		the content is scrolled or whether the content should scroll over it. Possible values are listed below.
+
+    		scroll
+    		fixed
+
+		Syntax
+		
+			selector {
+    		
+				background-image:url(url);
+    			background-attachment:value;
+				
+			}
+
+		According to the specification, background-attachment specifies whether a background image is fixed relative to the 	
+		viewport (e.g, the browser window) or scrolls along with the document. Internet Explorer 6 fixes the background image 
+		relative to the container, which is incorrect.
+		
+	Background-position
+
+		The background-position property is used with background-image to specify the location of a background image. Possible 		
+		values are listed below.
+
+    		top
+    		right
+    		bottom
+    		left
+    		center
+    		any combination of the above (e.g, top center or bottom left)
+
+		Syntax
+
+			selector {
+    
+				background-image:url(url);
+    			background-position:value;
+			}
+
+		The following page shows examples of different combinations of background properties.
+
+			Code Sample: BackgroundsAndColors/Demos/BackgroundImage.html
+--------------------------------------------------------------------------------------------------------------------------------
+	Cursor Styles
+
+		The syntax for specifying a cursor property is shown below:
+
+			Syntax
+
+				selector { cursor: value; }
+
+		The table below shows the most common values used for the cursor property. The cursor images are from Windows Vista. 
+		There will be some variation among operating systems.
+
+			Primary Cursor Styles
+
+				Value 	Cursor
+				cursor: default 	
+				cursor: crosshair 	
+				cursor: text 	
+				cursor: wait 	
+				cursor: help 	
+				cursor: move 	
+				cursor: pointer 	
+				cursor: all-scroll 	
+				cursor: progress 	
+				cursor: n-resize 	
+				cursor: s-resize 	
+				cursor: e-resize 	
+				cursor: w-resize 	
+				cursor: nw-resize 	
+				cursor: sw-resize 	
+				cursor: ne-resize 	
+				cursor: se-resize 	
+				cursor: col-resize 	
+				cursor: row-resize 	
+				cursor: no-drop 	
+				cursor: not-allowed 	
+
+		For pointer cursors, specify both the "pointer" and "hand" values for the cursor for best cross-browser support as shown 		below:
+		
+			Syntax
+
+				selector {
+    
+					cursor: pointer;
+    				cursor: hand;
+				
+				}
+
+		Open CssCursors/Demos/cursors.html in your browser to see the behavior of different cursor values.
+--------------------------------------------------------------------------------------------------------------------------------
+	Custom Cursors
+
+		Custom cursors are cursor files with a .cur (for static cursors) or .ani (for animated cursors) extension. They are 		
+		small graphic files using 256 color depth and usually 16x16, 32x32 or 48x48 pixels in size.
+
+		You can find many free custom cursors available on the web or you can create your own. The syntax for adding a custom 
+		cursor is shown below:
+		
+		Syntax
+		
+			selector {cursor: url(cursors/cursorName.cur);}
+
+		Because not all browsers and operating systems support custom cursors, it is important to provide an alternative cursor. 		In fact, oddly enough, some browsers (e.g, Firefox 3 and Safari 3 on the PC) only display the custom cursor when an 		
+		alternative cursor is also provided. The syntax for providing an alternative cursor is shown below:
+
+		Syntax
+
+			selector {cursor: url(cursors/cursorName.cur), pointer;} <------Use this for firefox!!!
+											^						
+											|	
+										Directory
+
+		Are Custom Cursors Useful?
+
+			It is easy to see how custom cursors could be irritating, but in some cases they can be useful. Consider the 
+			following scenarios:
+
+    			-A products site uses custom cursors to distinguish between free and non-free items offered on its website:
+    			
+				-A product review company (whose name begins with "W") uses custom cursors to distinguish between links to its 		
+				own reviews and links to reviews done by third parties:
+    			
+				-A designer uses a custom cursor to draw attention to links that will open pages in a new window:
+
+			The custom cursors shown here are in class files. They were created using Axialis CursorWorkshop from Axialis 	
+			Software.
+
+			Open CssCursors/Demos/CustomCursors.html in your browser to see samples of custom cursors.
+
+			Code Sample: CssCursors/Demos/CustomCursors.html
+--------------------------------------------------------------------------------------------------------------------------------
+	Pseudo-classes
+
+		The styles we have seen so far are attached to element names (e.g, div), class or id attributes (e.g, .big, #wrapper), 
+		or position in the page structure (e.g, ul ul). Pseudo-classes are used to classify elements by other means. The syntax 
+		of pseudo-classes is element:class.
+
+		Currently, the best supported pseudo-classes all apply to link states. A link can have the following pseudo-classes.
+
+    		a:hover - indicates the mouse pointer is over the link
+    		a:visited - indicates the link has been visited
+    		a:active - indicates the link is active (e.g, the user has clicked down on it)
+
+			Code Sample: Links/Demos/Links.html
+
+				<a href="http://www.washingtonpost.com">WashingtonPost.com</a><br>
+				<a href="http://www.webucator.com">Webucator</a><br>
+				<a href="http://www.google.com">Google</a><br>
+ 
+
+		The code above will change how links look as the user interacts with them. To see the effects, open the page	
+		in a browser.
+
+		Note that a link can be in more than one state. For example, a link can be both visited and active. As a result, the 					
+		order of the style rules matters as discussed in the callout below.
+
+		Order Matters
+
+			If a:active precedes a:hover, the effects in a:hover will take precedence. This means that, where there are 
+			conflicts, those properties defined for a:active will not be seen for visited links. So, in this example, you would 	
+			not see the color change when the user clicks down on a link.
+--------------------------------------------------------------------------------------------------------------------------------
+	CSS Button Links
+
+		Using pseudo-classes, it is possible to create links that look like buttons, something you needed images to do before 	
+		CSS. The following example illustrates this:
+
+			Code Sample: Links/Demos/LinkButtons.html
+
+				<!DOCTYPE HTML>
+				<html>
+					<head>
+						<meta charset="UTF-8">
+						<title>CSS Link Buttons</title>
+						<style type="text/css">
+
+							div {
+    							width:300px;
+							}
+ 
+							a {
+    							display:block;
+    							background-color: #eaf1dd;
+    							color:#060;
+    							text-decoration:none;
+    							font-family:Verdana, Geneva, sans-serif;
+    							font-size:1.5em;
+    							padding: 6px 4px;
+    							margin: 4px;
+    							border-right: 2px solid #999999;
+    							border-bottom: 2px solid #999999;
+    							border-top-width: 0px;
+    							border-left-width: 0px;
+							}
+ 
+							a:hover {
+    							color:#030;
+    							border: 1px solid #9999ff;
+							}
+ 
+							a:active {
+    							color:#aca;
+    							border-left: 2px solid #030;
+    							border-top: 2px solid #030;
+    							border-right-width: 0px;
+    							border-bottom-width: 0px;
+							}
+
+						</style>
+					</head>
+					<body>
+
+						<h1>Button Links</h1>
+
+						<div>
+    
+							<a href="http://www.washingtonpost.com">WashingtonPost.com</a>
+    						<a href="http://www.webucator.com">Webucator</a>
+    						<a href="http://www.google.com">Google</a>
+
+						</div>
+						
+					</body>
+				</html>
+
+		The screenshots below show how these CSS buttons look in different states: the default state, the hover state, and the 		
+		active state. Note that some of the properties (e.g, border, margin, and padding) used in this have not yet been 		
+		covered. (On webucator)
+--------------------------------------------------------------------------------------------------------------------------------
+	Getting Started
+
+		The following diagram shows how margins, borders, and padding affect the width and height of an element. (webucator)
+
+		As the diagram shows, margins, borders and padding increase the amount of space that an element takes up. For example, 
+		the width of the div above is set to 160 pixels. On all four sides, the div has 15 pixels of padding, a 10-pixel border, 		and a 20-pixel margin. The entire width of the element inclusive of its padding, border and margin is 250 pixels (160px 		
+		+ (2 * (15px + 10px + 20px))). This becomes important when using positioning to layout pages.
+
+			The code for the page shown above follows.
+
+				Code Sample: BordersMarginsAndPadding/Demos/Diagram.html
+
+					<!DOCTYPE HTML>
+					<html>
+						<head>
+
+							<meta charset="UTF-8">
+							<title>Diagram</title>
+
+						</head>
+
+						<body>
+
+							<div style="margin: 20px;
+            
+								border: 10px solid black;
+            					padding: 15px;
+            					background: red;
+            					text-align:center;
+            					color: white;
+            					width: 160px;">
+                					<img src="Images/block.gif" alt="block">
+            				</div>
+
+							<img src="Images/pixel.gif" alt="pixel" style="margin-left:45px; width:160px; height:4px;">
+	
+						</body>
+					</html>
+
+		We'll walk you through this again in the following presentation.
+--------------------------------------------------------------------------------------------------------------------------------
+	Borders
+
+		Border-style
+
+			The border-style property is used to specify whether an element has a border or not and, if it does, how that border 			should appear. Possible values are listed below:
+
+    			none
+    			dashed
+    			dotted
+    			double
+    			groove
+    			inset
+    			outset
+    			ridge
+    			solid
+
+			Code Sample: BordersMarginsAndPadding/Demos/BorderStyles.html (webucator)
+	
+			The above code will render the following: (webucator)
+			
+		Specifying Border-style by Side
+
+			Each side of an element can have a different border style. The properties for this are listed below:
+
+    			border-top-style
+    			border-right-style
+    			border-bottom-style
+    			border-left-style
+
+		Border-color
+
+			The border-color property is used with border-style to specify the color of the border. Its value can be any valid 	
+			color.
+
+				Syntax
+
+					selector {
+    					border-style:value;
+    					border-color:value;
+					}
+					
+		Specifying border-color by Side
+
+			Each side of an element can have a different border color. The properties for this are listed below:
+
+    			border-top-color
+    			border-right-color
+    			border-bottom-color
+    			border-left-color
+
+		Border-width
+
+			The border-width property is used with border-style to specify the width of the border on all four sides of an 		
+			element. All the units of measurement can be used. In addition, the border width can be defined using the following 	
+			relative terms.
+
+    		thin
+    		medium
+    		thick
+
+			The border-width property will have no effect unless the element has a border-style defined either in a style sheet 		
+			or by the user agent (e.g, browser).
+
+				Syntax
+	
+					selector {
+    					border-style:value;
+    					border-width:value;
+					}
+					
+		Specifying border-width by Side
+
+			Each side of an element can have a different border width. The properties for this are listed below:
+
+    			border-top-width
+    			border-right-width
+    			border-bottom-width
+    			border-left-width
+
+		Border
+
+			The border property is a shortcut property for specifying the width, style, and color in one step. There are similar 			shortcut properties for each border side: 
+
+    			border-top
+    			border-right
+    			border-bottom
+    			border-left
+
+			Syntax (webucator)	
+--------------------------------------------------------------------------------------------------------------------------------
+		Margin
+
+			The margin property is used to specify the margin around an element. It can be applied to both block and inline 		
+			elements. Margins can be specified in number of units (e.g, 20px) or in percentage of the width of the containing 
+			element.
+
+				Code Sample: BordersMarginsAndPadding/Demos/Margin.html
+		
+		Specifying Margins by Side
+
+			Each side of an element can have a different margin. The properties for this are listed below.
+
+	    		margin-top
+    			margin-right
+    			margin-bottom
+    			margin-left
+
+		Padding
+
+			The padding property is used to specify the padding between an element's edges and its content. It can be applied to 			both block and inline elements. Padding can be specified in number of units (e.g, 20px) or in percentage of the 	
+			width of the containing element.
+		
+				Code Sample: BordersMarginsAndPadding/Demos/Padding.html
+
+		Specifying Padding by Side
+
+			Each side of an element can have a different padding. The properties for this are listed below.
+
+    			padding-top
+    			padding-right
+    			padding-bottom
+    			padding-left
+--------------------------------------------------------------------------------------------------------------------------------
+	A Review of HTML Table Syntax
+
+		The following code sample shows a basic unstyled table:
+
+			Code Sample: StylingTables/Demos/TableHomeRuns.html
+	
+		The following table shows the structural and informational attributes used in HTML tables: (webucator)
+		
+		Table Structural and Informational Attributes Attribute
+
+							Tags
+				
+				summary 	table
+				colspan 	th, td
+				rowspan 	th, td
+
+		Most other attributes are for formatting and can be replaced with CSS.
+
+		The following table shows the formatting attributes used in HTML tables and their CSS replacements:
+
+			CSS for Tables Attribute 	CSS Replacement 					Tags
+
+			cellspacing 				border-collapse and border-spacing 	table
+			cellpadding				 	padding (applied to cells) 			table
+			border					 	border							 	table
+			background				 	background-image				 	table, th, td
+			bgcolor					 	background-color				 	all
+			width					 	width							 	table, th, td
+			height					 	height							 	table, tr, th, td
+			align					 	text-align						 	tr, th, td
+			valign 						vertical-align					 	tr, th, td
+
+	Some of the CSS replacements shown in the table above can be used in other table tags. For example:
+
+    	The border property can be applied to td and th as well as the table tag.
+    	The text-align property can be applied to table, thead, tbody, and tfoot as well as the tr, th and td tags.
+
+	We'll only discuss the cellpadding, cellspacing, and border replacements in this lesson as the other properties are all 	
+	general formatting properties that have no specific behavior unique to tables.
+
+	border-spacing
+
+		The border-spacing property is used to specify the space between adjacent borders and the content surrounding the table.
+
+			Code Sample: StylingTables/Demos/border-spacing.html
+
+		In Internet Explorer 7 and earlier, border-spacing is not supported.
+
+	border-collapse
+
+		The border-collapse property takes the values separate and collapse. It is used to indicate whether adjacent borders 
+		should be merged (collapse) or not (separate). The default behavior is to keep the borders separate. For example, if two 		adjacent borders have 5px borders, a 10px border would appear between them.
+
+		The screenshot below illustrates this: (webucator)
+	
+		Notice the border between cells 1 and 2 is twice the width of the edge borders. The rule used to achieve this effect is 	
+		shown below:
+
+			table {
+    			border-spacing:0px;
+    			border-collapse:separate;
+			}
+
+		As separate is the default, the border-collapse declaration could be left out.
+
+		The screenshot below shows how the border changes when border-collapse is set to collapse:
+
+		Notice the dividing border is now the same width as the edge borders. (webucator)
+
+		Some things to note about border-collapse:
+
+   	 		When border-collapse is set to collapse, border-spacing becomes moot.
+    		When collapsing borders, if two adjacent cells have different border widths, the wider of the two borders will be 		
+			used.
+			
+    		In Internet Explorer 7 and earlier, border-collapse does not override the cellspacing attribute which defaults to 2. 			For it to work, you must either include the cellspacing attribute with a value of 0 or use a more advanced CSS hack.
+
+	border
+
+		The deprecated border attribute of the table tag affects all the borders of the table. It is not possible to have 	
+		borders on some rows or cells but not others. Likewise, it is not possible to have vertical borders without horizontal 
+		borders. It's all or nothing.
+
+		CSS gives you much more control. It allows you to control the borders of each side of the table and each side of each 
+		cell independently.
+
+		For example, to apply a 2px solid dark blue border to the top and bottom of the table, but not to the left and right, 		
+		you could use the following CSS:
+
+			table {
+    			border-collapse: collapse;
+    			border-top: 2px solid darkblue;
+    			border-bottom: 2px solid darkblue;
+			}
+
+		You might then wish to add light blue horizontal borders within the table:
+
+			td, th {
+    			border-top: 2px solid lightblue;
+    			border-bottom: 2px solid lightblue;
+			}
+
+		The result of adding code differs between browsers. In Firefox and Safari, the cell borders take precedence over the 		
+		table border, so the dark blue borders defined for the table will be replaced by the light blue borders. Not so in 
+		Internet Explorer, which gives precedence to the table border. (webucator)
+
+		Now let's add silver vertical borders within the table by adding a couple of declarations to the td, th rule:
+
+			td, th { border-top: 2px solid lightblue;
+    				 border-bottom: 2px solid lightblue;
+    				 border-left: 2px solid silver;
+    				 border-right: 2px solid silver;
+				   }
+
+		We now have a table that looks something like this (FF and Safari on the left, IE on the right): (webucator)
+
+		One fix for the different approach to border precedence would be to apply a dark blue border to the top border of cells 	
+		in the top row and to the bottom border of cells in the bottom row of the table. But let's instead get rid of the outer 
+		table border entirely. That should be easy enough to do - just get rid of the border-top and border-bottom declarations 	
+		for the table tag. It's not as simple as that though, because the top and bottom rows have borders and so do all the 
+		left-most and right-most cells. Here's the trick:
+
+			table {
+    
+				border-collapse: collapse;
+    			border: 2px solid #fff; /*for IE 6 and 7*/
+    			border-style:hidden;
+			}
+
+		As you can see from the comments, we need to add two declarations: one for IE and another for Firefox and Safari. But it 		gets the job done:
+		
+	padding
+
+		The padding property should be applied to table cells (e.g, th and td) to create a buffer between their content and the 
+		cell borders. For example, to add space around the content in the cells in the table header, you could do this:
+
+			thead th {
+   	 			padding: 5px;
+			}
+
+		You might also want to push down the content in the footer of the table some:
+
+			tfoot td {
+    			padding-top: 10px;
+			}
+
+	As you can imagine, with all this control, you have the ability to design some pretty slick tables, a lot slicker anyway 		
+	than you could with plain old HTML. By adding colors and modifying other properties, we have improved our table's 		
+	appearance:
+
+	The code for this page is in StylingTables/Demos/borders.html.
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+				

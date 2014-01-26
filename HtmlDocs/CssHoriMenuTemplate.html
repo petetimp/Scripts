@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<link type="text/css" rel="stylesheet" href="../reset-meyer.css">
+<style type="text/css">
+
+#menuContainer{
+	position:relative;
+	left:50%;
+	margin:10px -450px;
+}
+
+#mainMenu{
+	width:900px;
+}
+#mainMenu .menuItem{
+	position:relative;
+	border:1px solid black;
+	width:120px;
+	float:left;
+	margin-left:2px;
+}
+#mainMenu .menuLink{
+	text-decoration:none;
+	display:block;
+	font:medium "Comic Sans MS";
+
+}
+#mainMenu .menuLink:hover{
+	color:#fff;
+	background:#00E;
+}
+#mainMenu .dropDown{
+	position:absolute;
+	left:15px;
+	top:23px;
+	display:none;
+}
+#mainMenu .menuItem:hover .dropDown{
+	display:block;
+}
+#mainMenu .dropDown .dropDownItem{
+	width:150px;
+	border:1px solid black;
+	border-top:none;
+}
+#mainMenu .dropDown .dropDownLink{
+	text-decoration:none;
+	display:block;
+	font:small "Comic Sans MS";
+}
+#mainMenu .dropDown .dropDownLink:hover{
+	color:#fff;
+	background:#00E;
+}
+#mainMenu .dropDown .dropDownItem:first-child{
+	border-top:1px solid #000;
+}
+#mainMenu .flyOut{
+	position:absolute;
+	top:57px;
+	left:151px;
+	width:150px;
+	display:none;		
+}
+#mainMenu .dropDownItem:hover .flyOut{
+	display:block;
+}
+#mainMenu .flyOut .flyOutItem{
+	display:block;
+	font:x-small "Comic Sans MS";
+	border:1px solid black;
+	border-top:none;
+}
+#mainMenu .flyOut .flyOutItem:first-child{
+	border-top:1px solid black;
+}
+#mainMenu .flyOut .flyOutlink{
+	text-decoration:none;
+	display:block;
+}
+#mainMenu .flyOut .flyOutlink:hover{
+	color:#fff;
+	background:#00E;
+}
+
+#mainMenu .flyOutNest{
+	position:absolute;
+	top:30px;
+	left:149px;
+	width:90px;
+	display:none;
+	
+}
+#mainMenu .flyOutItem:hover .flyOutNest{
+	display:block;
+}
+#mainMenu .flyOutNest .flyOutNestItem{
+	border:1px solid black;
+	border-top:none;
+}
+#mainMenu .flyOutNest .flyOutNestLink{
+	text-decoration:none;
+	display:block;
+}
+#mainMenu .flyOutNest .flyOutNestItem:first-child{
+	border-top:1px solid #000;
+}
+#mainMenu .flyOutNest .flyOutNestLink:hover{
+	color:#fff;
+	background:#00E;
+}
+</style>
+<title>CSS Menu</title>
+</head>
+<body>
+<div id="menuContainer">
+<ul id="mainMenu">
+	<li class="menuItem"><a class="menuLink" href="home.html">Home</a></li>
+	<li class="menuItem"><a class="menuLink" href="services.html">Services</a>
+		<ul class="dropDown">
+			<li class="dropDownItem"><a class="dropDownLink" href="service1.html">Service 1</a></li>
+			<li class="dropDownItem"><a class="dropDownLink" href="service2.html">Service 2</a></li>
+			<li class="dropDownItem"><a class="dropDownLink" href="service3.html">Service 3</a></li>
+		</ul>
+	</li>
+	<li class="menuItem"><a class="menuLink" class="menuLink" href="products.html">Products</a>
+		<ul class="dropDown">
+			<li class="dropDownItem"><a class="dropDownLink" href="product1.html">Product 1</a></li>
+			<li class="dropDownItem"><a class="dropDownLink" href="product2.html">Product 2</a></li>
+			<li class="dropDownItem"><a class="dropDownLink" href="product3.html">Product 3</a></li>
+		</ul>
+	</li>
+	<li class="menuItem"><a class="menuLink" href="support.html">Support</a></li>
+	<li class="menuItem"><a class="menuLink" href="blog.html">Blog</a></li>
+	<li class="menuItem"><a class="menuLink" href="about.html">About</a>
+		<ul class="dropDown">
+			<li class="dropDownItem"><a class="dropDownLink" href="history.html">Company History</a></li>
+			<li class="dropDownItem"><a class="dropDownLink" href="staff.html">Our Staff</a></li>
+			<li class="dropDownItem"><a class="dropDownLink" href="press.html">Press Releases</a></li>
+			<li class="dropDownItem"><a class="dropDownLink" href="investorInfo.html">Investor Information</a>
+				<ul class="flyOut">
+					<li class="flyOutItem"><a class="flyOutlink" href="sec.html">SEC Filings</a></li>
+					<li class="flyOutItem" ><a class="flyOutlink" href="stock.html">Stock Performance</a></li>
+					<li class="flyOutItem"><a class="flyOutlink" href="governance.html">Corporate Governance</a>
+						<ul class="flyOutNest">
+							<li class="flyOutNestItem"><a class="flyOutNestLink" href="chairman.html">Chairman</a></li>
+							<li class="flyOutNestItem"><a class="flyOutNestLink" href="president.html">President</a></li>
+							<li class="flyOutNestItem"><a class="flyOutNestLink" href="cfo.html">CFO</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li class="menuItem"><a class="menuLink" href="contact.html">Contact</a></li>
+</ul>
+</div>
+</body>
+</html>

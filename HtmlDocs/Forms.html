@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+		<title>Forms</title>
+		<meta charset= "UTF-8">
+	</head>
+
+	<body bgcolor="silver" text="purple">
+	
+	<!-- FORMAT <form method="post/get" action="name of file">
+    		
+			"form fields go here"
+				
+    			</form>-->
+	
+	<div align="center">
+        
+        <h1 id="Form">FoRmS </h1>
+        
+        <form method="post" action="register.cfm">
+        
+        Files can be uploaded to the server via the file input type.
+        The tag syntax is: <p><input type="file" name="filename"></p>
+        
+        </form>
+        
+        <h3>E-mail Field</h3>
+        <form method="post" action="register.cfm">
+        
+        	<table border="1">	
+       	 	
+        		<tr><th>Method 1</th> <th>Method 2</th></tr>
+		
+        		<tr>
+        		
+        			<td><label for="email">E-mail:</label>
+						<input type="text" name="email" id="email" value="" size="20" maxlength="40">
+					</td>
+ 				
+        
+ 					<td><label>E-mail: <input type="text" name="email" id="email" value="" size="20" maxlength="40"></label>
+ 					</td>
+ 				
+				</tr>
+				 				
+			</table>
+			
+        </form>
+        
+        <table width=500 cellspacing="3" cellpadding"3">
+        
+        	
+        	<h4><font color="pink">&lt;input type="text"&gt; Attributes</font></h4>
+        
+        	<tr>
+        	<th><font color="blue">Attribute</font></th>	<th><font color="red">Description</font></th>
+        	</tr>
+        	
+        	<tr>
+			<td>type</td> 	<td align="center">must be set to "text"</td>
+			</tr>
+			
+			<tr>
+			<td>name</td> 	<td align="center">variable name</td>
+			</tr>
+			
+			<tr>
+			<td>value</td> 	<td align="center">initial value in the text field</td>
+			</tr>
+			
+			<tr>
+			<td>size</td> 	<td align="center">width of the text field</td>
+			</tr>
+			
+			<tr>
+			<td>maxlength</td> 	<td align="right">maximum number of characters that can be entered</td>
+			</tr>
+			
+			<tr>
+			<td>id</td>			<td align="right">used by CSS and JavaScript to identify a specific element.</td>
+       		</tr>
+       		
+		</table> 
+		
+		<form method="post" action="register.cfm">
+		
+			<br>
+		
+			<h3>Password Field (and submit & reset buttons)</h3>
+		
+			<label> Password: <input type="password" name="pw" id="pw" size="10" maxlength="12"></label>
+			<input type="submit" name="submitbutton" id="submitbutton" value="Register">
+			<input type="reset" name="resetbutton" id="resetbutton" value="Clear">
+		
+							<!--Hidden Field-->
+		<input type="hidden" name="discount" id="discount" value="20%">
+		
+		<h3>Checkboxes</h3>
+		
+		Toppings:
+		<label>Sprinkles<input type="checkbox" name="sprinkles" id="sprinkles" value="sprinkles" checked ></label>
+		<label>Nuts<input type="checkbox" name="nuts" id="nuts" value="nuts" ></label>
+		<label>Whipped Cream<input type="checkbox" name="whip" id="whip" value"whip" ></label>
+		
+		<p>
+		<h3> Radio Buttons</h3>
+		
+		Cup or Cone?
+		<label><input type="radio" name="container" id="container1" value="cup"> Cup</label>
+		<label><input type="radio" name="container" id="container2" value="plaincone"> Plain cone</label>
+		<label><input type="radio" name="container" id="container3" value="sugarcone"> Sugar cone</label>
+		<label><input type="radio" name="container" id="container4" value="wafflecone"> Waffle cone</label>
+    
+		<p>
+		
+		<h3>Select Menus</h3>	
+		  	
+		<label>Flavor:
+			<select name="flavor" id="flavor" size="3" multiple="multiple">
+    			<option value="0" selected="selected"></option>
+    			<option value="choc">Chocolate</option>
+    			<option value="straw">Strawberry</option>
+    			<option value="van">Vanilla</option>
+			</select>
+			
+		</label>
+		
+		</p>
+		
+		<label>Flavor:
+			<select name="flavor" id="flavor">
+    			<option value="0" selected="selected"></option>
+    			<optgroup label="Soft Flavors">
+        			<option value="softChoc">Chocolate</option>
+        			<option value="softStraw">Strawberry</option>
+        			<option value="softVan">Vanilla</option>
+    			</optgroup>
+    			<optgroup label="Hard Flavors">
+        			<option value="hardChoc">Chocolate</option>
+        			<option value="hardStraw">Strawberry</option>
+        			<option value="hardVan">Vanilla</option>
+        			<option value="hardMint">Mint Chocolate Chip</option>
+        			<option value="hardCC">Cookies &amp; Cream</option>
+    			</optgroup>
+			</select>
+		</label>
+		
+		<p>
+		
+		<h3> Text Boxes</h3>
+		
+		<label><strong>Special Requests</strong><br>
+			<textarea name="requests" cols="40" rows="6">
+    		
+			</textarea>
+			
+		</label>
+		
+		</p>	
+
+	</form>
+		
+	</div>	
+		
+<pre>							&lt; input type="password" &gt; Attributes
+								
+							Attribute	Description
+							type 		must be set to "password"
+							name 		variable name
+							id			used by CSS and JavaScript to identify a specific element
+							size 	        width of the password field
+							maxlength 	maximum number of characters that can be entered
+							
+	<div> <font color="teal">							
+							&lt; input type="hidden"&gt; Attributes
+							
+							Attribute	Description
+							type 		must be set to "hidden"
+							name 		variable name
+							value 		initial value in the hidden field
+							id			used by CSS and JavaScript to identify a specific element
+	</font></div>
+	
+	<div> <font color="red">
+							&lt; input type="checkbox" &gt; Attributes
+							
+							Attribute	Description
+							type 		must be set to "checkbox"
+							name 		variable name
+							id			used by CSS and JavaScript to identify a specific element
+							value 		value of the checkbox
+							checked 	indicates that checkbox is pre-checked
+	</font></div>
+
+	<div> <font color="blue">
+	
+							&lt;input type="radio"&gt; Attributes
+							
+							Attribute	Description
+							type 		must be set to "radio"
+							name 		variable name
+							value 		value of the radio button
+							checked		indicates that radio button is pre-checked	
+	
+	</font></div>
+	
+	<div> <font color="#003300">
+	
+							&lt;select&gt; Attributes
+						
+							Attribute	Description
+							name 		variable name
+							size 		number of options to appear at once
+							multiple 	indicates that multiple options can be selected. value must be "multiple"
+
+	</font></div>
+	
+	<div><font color="maroon">					
+						
+							&lt;option&gt; Attributes
+						
+							Attribute	Description
+							value 		value to send to server if option is selected
+							selected 	indicates that option is pre-selected. value must be "selected"
+			
+	</font></div>
+	
+	<div><font color="#104E8B">
+							&lt;textarea&gt; Attributes
+							
+							Attribute 	Description
+							name 		variable name
+							cols 		number of columns to span in character width
+							rows 		number of rows to span in character height					
+
+	</font></div>											
+						
+</pre>		
+        
+        
+		<p><a href="#Form"> Back to top </a></p>
+		<a href="file://localhost/C:/Users/Pete%20T/Documents/Html%20Docs/second.html#h3">heading 3</a>	
+	
+	
+	
+	</body>
+	
+</html>
+	

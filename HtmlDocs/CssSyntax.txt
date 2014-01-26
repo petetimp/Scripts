@@ -1,0 +1,380 @@
+CSS Selector Syntax
+
+	selector {property:value;
+ 			  property:value;
+ 			  property:value;
+   		  	 }  
+--------------------------------------------------------------------------------------------------------------------------
+CSS Comments
+ 		   		  
+	/* Comments go here */
+--------------------------------------------------------------------------------------------------------------------------	
+SELECTORS
+
+	Type Selectors
+
+		Type selectors specify elements by tag name and affect every instance of that element type.
+	
+			type selector {property:value;
+ 						  property:value;
+ 						  property:value;
+   		  	 			  }  
+	Descendant Selectors
+
+		Descendant selectors specify elements by ancestry. Each "generation" is separated by a space.
+		For example, the following rule states that <strong> tags within <p> tags should have red text.
+
+			p(type selector) strong(descendant selector){color(property):red(value);}
+
+		With descendant selectors generations can be skipped. In other words, the code above does not
+		require that the <strong> tag is a direct child of the <p> tag.
+		
+	Child Selectors
+
+		Child selectors specify a direct parent-child relationship
+
+			p(parent type selector) > strong(child descendent selector) {color:red;}
+	
+		The > sign indicates that the rule only gets applied when the <strong> tag is a direct child of the <p> tag.
+		
+	Class Selectors
+
+		Almost all elements can take the class attribute, which assigns a class name to an element.
+		Class names are created in style sheet with rules defined for class selectors.
+		Class selectors begin with a dot and have arbitrary names.
+		
+		.warning(class selector) {font-weight:bold; color:#ff0000;} OR h1(type selector).warning(class selector)
+		
+		<h1 class="warning">WARNING</h1>		
+		<p class="warning">Don't go there!</p>  
+						^
+						|
+			Instances of the 'warning' class
+			
+	ID Selectors
+
+		As with the class attribute, almost all elements can take the id attribute,
+		which is used to uniquely identify an element on the page.
+		
+			#mainText(id selector) {
+    			margin-left:20px;
+    			margin-right:20px;
+				}
+ 
+			<div id="mainText">
+			This is the main text of the page...
+			</div>
+			
+	Attribute Selectors
+
+		Attribute selectors specify elements that contain a specific attribute.
+		They can also specify the value of that attribute.
+
+		The following selector affects all links with a target attribute.
+
+		a[target](attribute selector) {color:red;}
+
+		The following selector would only affect links whose target attribute is "_blank".
+
+		a[target="_blank"] {color:red;}
+		
+	The Universal Selector
+	
+		*(universal selector){color:red;}
+		
+	Grouping
+
+		Selectors can share the same declarations by separating them with commas.
+		
+		i(type selector), (class selector).warning, (id selector)#important {text-decoration: underline;}
+--------------------------------------------------------------------------------------------------------------------------
+Determining a Selector's Specificity ((Note: this is important only for debugging;
+you'll almost never have to use it, except when you have conflicting styling
+declarations and can't figure out why one takes precedence over the other.))
+ 
+	1.(Most specific)Declarations in the style attribute:
+
+		style""
+		
+	2. Selectors with id attributes
+	
+		#id attribute{} OR element name#id attribute{}
+		
+	3. Selectors with other attributes
+	
+		.class attribute{} OR element name.class attribute{} OR element name[attribute]
+		OR pseudo-classes (more about this later)
+		
+	4. Selectors with element names but no attributes
+	
+		element name{}
+		
+	5.(Least specific)The Universal Selector
+	
+		*{}  
+
+	0,0,0,0 method (See Webucator instructions)
+--------------------------------------------------------------------------------------------------------------------------	
+Embedded Style Sheets
+
+	Embedded style sheets appear in the style element in the head of an HTML page.
+	The code below shows a page with an embedded style sheet.
+	
+	<!DOCTYPE HTML>
+	<html>
+	
+		<head>
+		
+			<meta charset="UTF-8">
+			
+			<title>Embedded Style Sheet</title>
+			
+Embedded	<style type="text/css">
+    			.warning(class selector) {color(property):#ff0000(value)}
+Style    		h1(type selector).warning(class selector) {text-decoration(property):underline(value)}
+    			p(type selector).warning(class selector) {font-weight(prop):bold(value)}
+Sheet		</style>
+		
+			
+		</head>
+		
+		<body>
+		
+			<h1(element name) class(attribute)="warning(value)">WARNING(displayed text)</h1>
+			<p(element name) class(attribute)="warning(value)">Don't go there!(displayed text)</p>
+									^
+									|
+									|		
+					(instances of the 'warning' class)
+			
+		</body>
+		
+</html>
+--------------------------------------------------------------------------------------------------------------------------
+External Style Sheets
+
+	External style sheets are created in separate documents with a ".css" extension.
+	An external style sheet is simply a listing of rules. It cannot contain HTML tags.
+**************************************************************************************************************************
+Css File (in different HTML file)
+External Style Sheet
+
+	.warning {color:#ff0000}
+	h1.warning {text-decoration:underline}
+	p.warning {font-weight:bold}
+**************************************************************************************************************************	
+<!DOCTYPE HTML>
+<html>
+	
+	<head>
+	
+	<meta charset="UTF-8">
+	<title>External Style Sheet</title>
+	<link href="name of css file" rel="stylesheet" type="text/css">  <------Links element to external style sheet
+
+	</head>
+
+	<body>
+	
+		<h1 class="warning">WARNING</h1>
+		<p class="warning">Don't go there!</p>
+
+	</body>
+
+</html>
+
+												<link> Attributes
+
+ 								Attributed 		Description
+								href 			points to the location of the external style sheet
+								rel 			must be set to "stylesheet" for linking style sheets
+								type 			must be set to "text/css" for linking to cascading style sheets 	
+--------------------------------------------------------------------------------------------------------------------------
+Inline Styles
+
+	Inline styles are created by adding the style attribute to a tag.
+	As with the class and id attributes, almost all elements can take the style attribute.
+	The value of the style attribute is a list of one or more property-value pairs separated by semi-colons.
+ 	The code sample below illustrates how inline styles are used.
+ 	
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Inline Styles</title>
+	</head>
+	
+	<body>
+
+		<p style="color:blue; font-weight:bold; font-size:12pt">Common Greetings</p>
+			
+			<ul style="margin-top:-20px; font-size:10pt">
+    			<li style="list-style-type:square">Hello</li>
+    			<li style="list-style-type:circle">Hi</li>
+    			<li style="list-style-type:disc">Howdy</li>
+    		</ul>
+	</body>
+	
+</html>
+--------------------------------------------------------------------------------------------------------------------------
+Media Types
+
+	Styles can be defined for different media. For example, you may want to style a page
+    one way for viewing with a browser and a different way for viewing in print.
+    The media type is defined in the <link> tag for external style sheets and in the <style>
+    tag for embedded style sheets.
+	
+	Syntax
+
+	External Stylesheet		<link href="stylesheet.css" rel="stylesheet" type="text/css" media="screen">
+ 
+	Embedded Stylesheet		<style type="text/css" media="all">
+    							/* rules */
+							</style>
+
+	If the media is undefined then the style rules will apply to all media. Possible values for media are:
+
+    	all
+    	aural
+    	braille
+    	embossed
+    	handheld
+    	print
+    	projection
+    	screen
+    	tty
+    	tv
+--------------------------------------------------------------------------------------------------------------------------
+<div> & <span>
+
+	The <div> and <span> tags are used in conjunction with Cascading Style Sheets.
+	By themselves, they do very little. In fact, the <span> tag has no visual effect
+	on its contents. The only effect of the <div> tag is to block off its contents,
+	similar to putting a <br> tag before and after a section on the page.
+
+	Like most tags, the <div> and <span> tag can take the class, id, and style attributes.
+	It is through these attributes that styles are applied to the elements.
+
+
+	Code Sample:
+
+		<!DOCTYPE HTML>
+		<html>
+
+		<head>
+		
+			<meta charset="UTF-8">
+			<title>Div and Span</title>
+		
+		</head>
+
+		<body>
+
+			<div style="position:absolute; left:0px; top:0px;
+    		font-family:Verdana; font-size:10pt;
+    		border-style:groove; border-width:30px;
+    		border-color:blue; padding:4px"
+    		>
+
+    			This text appears in the
+    			<span style="font-style:italic; color:red">upper-left hand corner</span>
+    			of the page.<br>
+				It also has a big blue groovy border around it.
+
+			</div>
+
+		</body>
+
+</html>
+--------------------------------------------------------------------------------------------------------------------------
+Units of Measurement
+
+	CSS allows you to specify font size, border size, margins, padding, etc. using many different units of measurement.
+	The table below shows the units available.
+
+	Unit 	Description 	Example
+	px 		Pixels 			margin-top: 10px;
+	pt 		Points 			font-size: 12pt;
+	in 		Inches 			padding-top: .5in;
+	cm 		Centimeters 	top: 5cm;
+	mm 		Millimeters 	left: 45mm;
+	pc 		Picas 			bottom: 12pc;
+	em 		Ems 			font-size: 1.5em;
+	ex 		Exs 			font-size: 1.5ex;
+	% 		Percentage 		width: 80%;
+	
+	Pixels (px)
+
+		The measurement unit most often used for designing web pages is pixels.
+		A pixel is not an absolute measurement like, for example, an inch or a point.
+		The actual size of a pixel depends on the resolution and size of a user's monitor.
+		Consider an image that is 900 pixels wide. If the monitor resolution is set to 800 by 600 pixels,
+		then the image will not fit on the screen. However, if the monitor resolution on the same computer
+		is set to 1024 by 768 pixels, the image will fit with room to spare.
+
+	Points (pt)
+
+		Points should be reserved for print. There are 72 points in an inch.
+		
+	Inches (in), Centimeters (cm), and Millimeters (mm)
+
+		Although these are the most common units of measurement in life, they should be avoided in Web design.
+	
+	Picas (pc)
+
+		Picas should be reserved for print. There are 6 picas in an inch.
+
+	Ems (em)
+
+		An em (or Mutt) is a relative unit that refers to the size of the letter "M" in a font. Because em is a relative
+		rather than absolute measurement, it is often used in Web design.
+
+	Exs (ex)
+
+		The "x-height" is the height of font's lowercase "x". Exs are used to set the size of content based on the size
+		of the surrounding font.
+--------------------------------------------------------------------------------------------------------------------------
+The Inherit Value
+
+	Many properties take the value "inherit". This specifies that the property value should be inherited from the parent
+	element. If a property is left undefined, the implicit value is "inherit".
+
+	To illustrate, look at the following:
+		
+	<!DOCTYPE HTML>
+	<html>
+
+		<head>
+
+			<meta charset="utf-8">
+			<title>Inherit</title>
+			<style>
+	
+				p {
+    			font-style:none;
+				}
+ 
+				em {
+    			font-style: inherit;
+    			text-decoration:underline;
+				}
+		
+			</style>
+
+		</head>
+	
+		<body>
+
+			<p>Even the word <em>inherit</em> isn't italicized.</p>
+
+		</body>
+	
+	</html>
+
+	The rule for p sets the font-style of paragraphs to none, which means plain, non-italicized text.
+	We don't really have to do this as the default value for font-style for paragraphs is none.
+
+	The rule for em sets the font-style for emphasized text, which is usually italic, to inherit.
+	That means that, in the HTML below the CSS, the em tag will inherit the none value from the containing p tag.
+	We also set the text-decoration property to underline, so we can still see that the tag's content is emphasized:

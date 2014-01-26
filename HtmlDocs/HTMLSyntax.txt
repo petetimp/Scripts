@@ -1,0 +1,1161 @@
+HTML SYNTAX
+----------------------------------------------------------------------------------------------------------------------------------
+	The HTML Skeleton
+
+	At its simplest, an HTML page contains what can be thought of as a skeleton - the main structure of the page. It looks like 		
+    this:
+    
+		Code Sample: HTMLBasics/Demos/Skeleton.html
+
+			<!DOCTYPE HTML>
+			<html>
+            
+				<head>
+
+					<meta charset="UTF-8">
+					<title></title>
+
+				</head>
+                
+				<body>
+                
+    				<!--Content that appears on the page-->
+
+				</body>
+                
+			</html>
+	----------------------------------------------------------------------------------------------------------------------------------
+	Elements		
+		
+		The <head> Element
+
+			The <head> element contains content that is not displayed on the page itself. Some of the elements commonly found in 		
+            the <head> are:
+
+    			-Title of the page (<title>). Browsers typically show the title in the "title bar" at the top of the browser 	
+				window.
+				  
+				-Meta tags, which contain descriptive information about the page (<meta>)
+    			
+				-Script blocks, which contain javascript or vbscript code for adding functionality and interactivity to a page 
+				(<script>)
+				
+				-Style blocks, which contain Cascading Style Sheet rules (<style>).  
+				
+				-References (or links) to external style sheets (<link>).
+				
+				-HTML elements describe the structure and content of a Web page. Tags are used to indicate the beginning and end 		
+				of elements. The syntax is as follows:
+				
+					<tagname>Element content</tagname>
+
+		Attributes
+
+			-Tags often have attributes for further defining the element. Attributes come in name-value pairs.
+
+			-In HTML (without the X) some tags have attributes that don't take a value, like so:
+			
+				<tagname att1>Element content</tagname>
+
+			-Note that attributes only appear in the open tag, like so:
+				
+				<tagname att1="value" att2="value">Element content</tagname>
+
+			-The order of attributes is not important.
+
+		Empty vs. Container Tags
+
+			-The tags shown above are called container tags because they have both an open and close tag
+			 with content contained between them. Tags that do not contain content are called empty tags.
+			 The syntax is as follows:
+
+				<tagname>	or	 <tagname att1="value" att2="value">
+				
+		Blocks and Inline Elements
+		
+			Block-level Elements
+
+				Block elements are elements that separate a block of content. For example, a paragraph (<p>) element is a block 		
+				element. Other block elements include:
+
+    				Lists (<ul> and <ol>)
+    				Tables (<table>)
+    				Forms (<form>)
+    				Divs (<div>)
+
+			Inline Elements
+
+			-Inline elements are elements that affect only snippets of content and do not block off a section of a page. Examples 		
+			of inline elements include:
+
+    			Links (<a>)
+    			Images (<img>)
+    			Formatting tags (<b>, <i>, <tt>(not HTML5 supported), etc.)
+    			Phrase elements (<em>, <strong>, <code>, etc.)
+    			Spans (<span>)
+
+			-*Important: many formatting tags have been deprecated in HTML 4.0 and XHTML 1.0. Although the ones listed here are 		
+			not deprecated, their use is discouraged as the same effect can be accomplished with CSS.
+
+			Comments
+
+				Comments are generally used for one of three purposes.
+
+    				1. To write helpful notes about the code; for example, why something is written in a specific way.					
+    				2. To comment out some code that is not currently needed, but may be used sometime in the future.
+					3. To debug a page.
+
+				HTML comments are enclosed in <!-- and -->. For example:
+			
+					<!-- This is an HTML comment -->
+----------------------------------------------------------------------------------------------------------------------------------
+	The HTML/XHTML Version
+
+		-XHTML 1.0 and HTML 4.0 consist of the same sets of elements. (HTML5 introduces some new elements, but those are not 		
+		covered in this course.) The only difference between HTML and XHTML is that HTML is fairly flexible; whereas, XHTML has 	
+		strict rules.
+
+		HTML is a SGML-based; whereas XHTML is XML-based. XML and SGML are both meta-languages (languages for defining other 	
+		languages). XML applies stricter rules than SGML does.
+
+		DOCTYPE Declarations
+
+			The DOCTYPE declaration goes at the beginning of the document and is used to indicate which version of (X)HTML the 			
+			page uses. There are three versions of (X)HTML documents: strict, frameset and transitional (loose). In HTML, the 	
+			DOCTYPE declaration is optional. In XHTML, it is required.
+
+			All this DOCTYPE stuff used to be really important and is explained below, but with the introduction of HTML5, there 	
+			an easy way out, which we highly recommend as it is both simpler and forward-compatible. Instead of worrying about the 			complicated DOCTYPEs explained below, simply use the new HTML5 DOCTYPE:
+
+				<!DOCTYPE HTML>
+
+			This DOCTYPE is, believe it or not, completely backward compatible and will make all browsers work in "standards 		
+			mode."
+
+			As many many web pages will still use the old DOCTYPEs, they are worth understanding and are explained below.
+
+				Strict
+
+					-The strict versions of HTML and XHTML do not allow use of tags and attributes that have been deprecated.
+
+					-Deprecated tags are tags that the W3C has indicated may eventually be removed from the specification because 	
+					of new and better ways of accomplishing the same thing. Most of these tags are for formatting; the W3C 
+					recommends using Cascading Style Sheets instead. See
+					http://www.w3.org/TR/html401/appendix/changes.html#h-A.3.1.2 for a list of deprecated tags.
+
+					-The strict versions do not support framesets.
+
+					XHTML Strict
+
+						<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+						"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ 
+					HTML Strict
+					
+						<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            			"http://www.w3.org/TR/html4/strict.dtd">
+
+				Transitional (Loose)
+
+					-The transitional (or loose) versions of HTML and XHTML allow for the use of deprecated tags and attributes. 		
+					
+					-The transitional versions also do not support framesets.
+
+					XHTML Transitional
+					
+						<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+            			"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+					HTML Transitional
+
+						<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+            			"http://www.w3.org/TR/html4/loose.dtd">
+
+				Frameset
+
+					-The frameset versions of HTML and XHTML are the same as the transitional versions, except that they also 		
+					support frames.
+
+						XHTML Frameset
+						
+							<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+            				"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+ 
+						HTML Frameset
+
+							<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+            				"http://www.w3.org/TR/html4/frameset.dtd">
+
+				Closing Tags
+
+					-HTML 4.0 allows some closing tags to be omitted. For example, in HTML, list item (<li>) tags do not require a 					matching close tag (</li>).
+
+					-In XHTML, all tags must be closed. Empty tags are closed by adding a forward slash before the final angle 		
+					bracket of the tag:
+					
+						<tagname att1="value" att2="value" />
+
+						Note the space before the forward slash. Though this is not required by XHTML, it may help older browsers 	
+						from getting confused.
+
+					-In HTML 4.0, the forward slash is not required:
+					
+						<tagname att1="value" att2="value">
+
+				Case Sensitivity
+
+					-In HTML, case is not important.
+					-In XHTML, all tags and attributes must be in lowercase letters.
+
+				Quotes
+
+					-In HTML, attribute values do not always have to be in quotes; whereas, in XHTML quotes are required. Either 		
+					single quotes or double quotes may be used.
+
+				Nesting
+
+					-In both HTML and XHTML, tags should be nested properly. Proper nesting requires nested tags to be closed in 	
+					reverse order from which they were opened. Another way to say this is that each element must be completely 	
+					contained by its parent element. For example, the following line of code uses improper nesting:
+
+						<parent><child>sometext</parent></child>  <---WRONG
+
+					-The corrected line looks like this:
+
+						<parent><child>sometext</child></parent>  <---RIGHT
+----------------------------------------------------------------------------------------------------------------------------------
+	lang and xml:lang
+
+		The lang and xml:lang attributes are used to tell the browser (or other user agent) the language contained within an 			
+		element. The W3C recommends that both lang and xml:lang be included in the html tag of all XHTML documents, like so:
+
+			<html xml:lang="en" lang="en">
+
+	According to the W3C, these attributes may be helpful in:
+
+    	Assisting search engines
+    	Assisting speech synthesizers
+    	Helping a user agent select glyph variants for high quality typography
+    	Helping a user agent choose a set of quotation marks
+    	Helping a user agent make decisions about hyphenation, ligatures, and spacing
+    	Assisting spell checkers and grammar checkers
+
+					----------------------------------------------------------------------------------------------------------------------------------										
+	Some XML Stuff
+
+		The XML Declaration
+
+			-XHTML documents are, by definition, XML documents. This means that they follow the rules of XML. Although not 	
+			required, it is good practice to include an XML declaration in your XHTML documents. If included, the XML declaration 	
+			must be at the very beginning of the document. The XML declaration looks like this:
+		
+				<?xml version="1.0" encoding="UTF-8"?>
+
+			-For best results, it is best to define the encoding in a meta tag as well. Note that you should include the following 			tag within the head tag:
+
+				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		The XHTML Namespace
+
+			-In XHTML documents, the html tag must contain an xmlns declaration for the XHTML namespace, which indicates that the 	
+			document must conform to the rules defined in the XHTML namespace. The syntax is shown below:
+
+				<html xmlns="http://www.w3.org/1999/xhtml">	----------------------------------------------------------------------------------------------------------------------------------
+	Paragraph
+
+		-Paragraph text should be contained in <p> tags as shown in the following example: (On Webucator)
+		
+		Heading Levels
+
+			-HTML supports six levels of heading. The tags are <h1>, <h2>, <h3>, <h4>, <h5> and <h6>, descending in importance 	
+			from <h1> to <h6>. Headings are block elements. 
+----------------------------------------------------------------------------------------------------------------------------------	
+	Breaks and Horizontal Rules
+
+		The <br> tag forces a line break. The <hr> tag creates a horizontal rule across the page. The code below shows how they 		
+		are used: (Webucator)
+----------------------------------------------------------------------------------------------------------------------------------
+	Quoted Text
+
+		The <blockquote> and <q> elements are used to designate quoted text. Both elements can take the cite attribute, which is 	
+		used to reference the source. <blockquote> is a block-level element, while <q> is an inline element. See the example 		
+		below:
+
+			<blockquote cite="http://www.ushistory.org/declaration/document/index.htm">
+    		<p>When in the Course of...</p></blockquote>
+ 
+			<p>The second paragraph, which begins
+    		<q cite="http://www.ushistory.org/declaration/document/index.htm">We hold these truths...</q>
+    		is more widely known.</p>
+
+		-Most browsers indent blockquotes from both the left and right. They are supposed to wrap text nested in <q> tags with 		
+		quotes.
+
+		-Some older version of Internet Explorer do not render the Quotes.
+		-Firefox renders this page as follows: (Webucator)
+
+		Some notes:
+
+    		-Modern browsers don't do anything visual with the cite attribute.
+    		-Blockquotes should not be used simply to indent text from both sides. CSS can be used for that purpose.
+    		-Blockquotes cannot be contained within paragraphs.
+    		-Blockquotes cannot have text as a direct child. Usually, blockquotes contain paragraphs (<p> tags).
+----------------------------------------------------------------------------------------------------------------------------------
+	Preformatted Text
+
+		-Occasionally it is desirable to output content as it is laid out in the code, whitespace and all. The <pre> tag is used 				
+		for this purpose. It is often used in online coding tutorials (such as this one) so that the whitespace shown in the 
+		tutorial reflects how it would appear in the document it represents. The code below shows how <pre> is used:
+				
+				<pre>
+					&lt;html&gt;
+					&lt;head&gt;
+					&lt;title&gt;Hello world!&lt;/title&gt;
+					&lt;/head&gt;
+					&lt;body&gt;
+    				&lt;h1&gt;Hello world!&lt;/h1&gt;
+					&lt;/body&gt;
+					&lt;/html&gt;
+				</pre>
+----------------------------------------------------------------------------------------------------------------------------------
+	Phrase Elements
+
+		Phrase elements provide structural information about the content they contain. The most common phrase elements are <em> 		
+		and <strong>. Both elements indicate that the element content should be emphasized. <strong> indicates stronger emphasis 
+		than <em>. Most browsers bold <strong> content and italicize <em> content. You can learn about some commonly used phrase 
+		elements at http://www.w3.org.
+
+		The code below illustrates how these tags can be used:
+		
+			<p>This is <em>important</em>.</p>
+			<p>This is <strong>really important</strong>.</p>
+----------------------------------------------------------------------------------------------------------------------------------
+	HTML 4 Formatting Elements
+
+		In HTML 4 and XHTML, most formatting tags have been deprecated. The five that remained are shown in the table below. But 	
+		in HTML5, none of these are considered formatting elements anymore.
+
+			Non-deprecated Formatting Tags (in HTML 4.0) 
+			
+			Tag 		Description 			HTML5 Notes
+			<b> 		Bolds text 				For "text to be stylistically offset from the normal prose without conveying any 		
+												extra importance" (see reference)
+			<i> 		Italicizes text 		For "text in an alternate voice or mood" (see reference)
+			<tt> 		Renders teletype text 	Deprecated in HTML5.
+			<big> 		Increases font size 	Deprecated in HTML5.
+			<small> 	Decreases font size 	For "side comments and small print" (see reference)
+----------------------------------------------------------------------------------------------------------------------------------			
+	Documenting Changes
+
+		Sometimes it is necessary to document changes in your HTML pages. This is especially common when drafting legal documents. 		The specification provides <ins> and <del> elements for documenting inserted and deleted content, respectively. Both 	
+		elements take a cite attribute for pointing to a resource explaining the change and a datetime attribute for indicating 	
+		the time and date of the change. The format for datetime is YYYY-MM-DDThh:mm:ssTZD. The title attribute can also be used 
+		to indicate a short reason for the change. The example below shows how they are used:
+		
+			<p>The baseball player with the most home runs is <del datetime="2007-08-01" cite="http://mlb.mlb.com" title="Not 	
+			anymore">Hank Aaron</del><ins datetime="2007-08-07" cite="http://mlb.mlb.com" title="Steroids?">Barry Bonds</ins>.</p>
+----------------------------------------------------------------------------------------------------------------------------------
+	Text Links
+
+		-The tag for a link is perhaps the least intuitive of all the HTML tags. It is <a> and it comes from the word "anchor." 		
+		You will see why later in the lesson. By itself, the <a> tag does nothing. To create a link, it requires the href 	
+		attribute, which takes as a value the path to the file to which to link. The syntax is as follows:
+
+		Syntax
+
+			<a href="path_to_file">Link Text</a>
+
+			For example:
+
+				<a href="bios/JohnLennon.html">John Lennon</a>
+
+		-Note that, in HTML 4, <a> elements may not be direct children of the body element; however, that rule has been removed in 		HTML5 which allows inline tags as direct children of the body. This doesn't mean a link tag can't be in the body in HTML 
+		4, but that it has to be the child of another element, say, a <p> tag.
+
+		-In HTML5, this is allowed:
+
+			<body>
+    
+				<a href="http://www.webucator.com">Webucator</a>
+
+			</body>
+
+		-Whereas the <a> element would have to be enclosed in another element in HTML 4, like this:
+
+			<body>
+    
+				<div>
+        
+					<a href="http://www.webucator.com">Webucator</a>
+     
+	 			</div>
+
+			</body>					
+----------------------------------------------------------------------------------------------------------------------------------
+	Absolute vs. Relative Paths
+			
+		Absolute Paths
+
+			An absolute path shows the complete path to a file starting from the web root.
+
+				Assume that the wwwroot folder is the web root. This means that when a user types 		
+				"http://www.servername.com/index.html", the index.html page within the wwwroot folder will be downloaded to the 	
+				browser. The absolute path to the web root from a page on the same domain is simply a forward slash (/). So, a 
+				link on Company.html to index.html could be written like this:
+
+					<a href="/index.html">Home Page</a>
+
+			The same link could be placed on any page in any folder below the wwwroot folder or on any page in the wwwroot folder 	
+			itself.
+
+			Using an absolute path, a link to Company.html would include the about directory, like this:
+			
+				<a href="/about/Company.html">About Our Company</a>
+
+			External Links
+
+				When linking to a file at a different domain you must identify the location of the domain using the domain name 	
+				(or IP address) of the site. To illustrate, assume that the directory structure shown above is found at 		
+				http://www.beatles.com. A link to Company.html from another site would be written like this:
+	
+					<a href="http://www.beatles.com/about/Company.html">About the Beatles</a>
+
+					See Links/Demos/Links.html for more examples of links with absolute paths.
+
+	Relative Paths
+
+		Relative paths can only be used to link to other files under the same web root. A relative path indicates where a file is 			
+		relative to the file that contains the link. The folder (or directory) that contains the file being worked on is called 
+		the current directory. The relative path to another file that is also in the current directory is just the name of that 	
+		file. For example, since Company.html and Contact.html are found in the same directory, they can link to each other simply 		by specifying the file name. The following shows a link that could be used in Contact.html to Company.html.
+
+			<a href="Company.html">About Our Company</a>
+
+		The relative path to a file in a subdirectory of the current directory must include the name of the subdirectory. For 
+		example, to link to Company.html from index.html you must first point to the about directory, like so:
+
+			<a href="about/Company.html">About Our Company</a>
+
+		The relative path to a file in a directory above the current directory should begin with ../ For example, the following 		
+		shows a link to index.html from Company.html.
+
+			<a href="../index.html">Home Page</a>
+
+		See Links/Demos/Links.html for more examples of links with relative paths.
+
+	Default Pages
+
+		The web server administrator can set up default page names to look for when a path ends with a directory name without 		
+		specifying a file. Often these files are called index.html or Default.htm. In this case, the following two URLs would be 
+		identical, both loading index.html.
+	
+			http://www.beatles.com
+			http://www.beatles.com/index.html
+----------------------------------------------------------------------------------------------------------------------------------
+Targeting New Windows
+
+	The target attribute is used to specify the browser window in which the linked page will open.
+
+	The target attribute is deprecated in HTML 4.0, but no other method for targetting new windows is provided. To be (X)HTML 	
+	Strict compliant, you need to open new windows with JavaScript or by using some other scripting technique. Note that the 
+	target attribute is no longer deprecated in HTML5. So, it's usable in all past and current versions of HTML except (X)HTML 
+	Strict.
+
+		<a href="Company.html" target="newwin">Our Company</a>
+
+	If there is no open browser window with the specified target name, a new window will be opened with that name. As long as that 	window stays open, future links with the same target value will target that window. To force each link to target a brand new 	
+	window, use "_blank" as the value of the target attribute.
+	<a href="Company.html" target="_blank">Our Company</a>
+
+	*See Links/Demos/Links.html for more examples of links with targets.
+----------------------------------------------------------------------------------------------------------------------------------
+	Email Links
+
+		Email links are used to open an email client to start a new email message. The syntax is similar to the links we have seen 		thus far. The value of the href attribute begins with mailto: and ends with an email address. For example:
+
+			<a href="mailto:paul@beatles.com">Email Paul</a>
+
+		It is good practice to include the email address as the text of the link, so that people who are printing the page or 			
+		whose setup does not support email links can see the actual email address. For example:
+
+			Email Paul at <a href="mailto:paul@beatles.com">paul@beatles.com</a>.
+
+		See Links/Demos/Links.html for more examples of links with email links.
+----------------------------------------------------------------------------------------------------------------------------------
+	Anchors
+
+		Anchors are named locations to which a link can point. Anchors can be created with the <a> tag using the name attribute or 		with any tag using the id attribute.
+		
+		Anchors with the name Attribute
+
+			Here is an example of creating an anchor with the <a> tag.
+
+				<a name="paul"></a>
+
+			As you can see, anchors are created using the <a> tag with the name attribute. To link to an anchor, use the pound 	
+			sign (#) followed by the anchor name. For example,
+			
+				<a href="#paul">Read about Paul</a>
+
+			You can also link to anchors on other pages.
+
+				<a href="about.html#paul">Read about Paul</a>	OR
+				<a href="http://www.beatles.com/about.html#paul">Read about Paul</a>
+
+			<!DOCTYPE HTML>
+			<html>
+
+				<head>
+
+					<meta charset="UTF-8">
+					<title>Anchors</title>
+
+				</head>
+	
+				<body>
+	
+					<h1><a name="top" id="top"></a>Anchors</h1>
+		
+					<h2>Links to Anchors on Remote Pages</h2>
+
+					<div>
+    
+						<a href="http://www.w3.org/TR/html401/struct/links.html#h-12.2.3">W3C anchors.</a>
+		
+					</div>
+ 
+					<h2>Links to Anchors on This Page</h2>
+
+					<div><a href="#winnie">Pooh Goes Visiting</a></div>
+
+					<div><a href="#alice">A Mad Tea-Party</a></div>
+
+					<div><a href="#naughtyboy">The Naughty Boy</a></div>
+
+					<hr>
+ 
+					<h2>Anchors on This Page</h2>
+
+					<p>Each title below has an anchor.</p>
+ 
+					<h3><a name="winnie" id="winnie"></a>POOH GOES VISITING - A.A. Milne</h3>
+
+					<p>Pooh always liked a little something...'</p>
+
+					---- C O D E   O M I T T E D ----
+
+					<hr>
+		
+					<h3><a name="alice" id="alice"></a>A MAD TEA-PARTY - Lewis Carroll</h3>
+
+					<p>There was a table set out under a tree....'</p>
+		
+					---- C O D E   O M I T T E D ----
+		
+					<hr>
+		
+					<h3><a name="naughtyboy" id="naughtyboy"></a>THE NAUGHTY BOY - Hans Christian Andersen</h3>
+		
+					<p>Along time ago, there lived an old poet, a thoroughly....</p>
+		
+					---- C O D E   O M I T T E D ----
+		
+					<div><a href="#top">Back to top</a></div>
+
+			</body>
+			
+		</html>
+		
+		name vs. id
+
+			The major advantage of using the <a> tag with the name attribute is that it's supported by older browsers.
+
+			The advantage of using the id attribute is that it can be applied to any tag, so there is no need to explicitly create 			anchors.
+----------------------------------------------------------------------------------------------------------------------------------			
+	The title Attribute
+
+		The title attribute can be used to provide more descriptive information about a link.
+
+			<a href="#winnie" title="A short story about Winnie the Pooh">Pooh Goes Visiting</a>
+
+		-This is especially useful when the content of the link is not descriptive. For example, we'll see later how to make 		
+		an image into a link. It might not be clear from the image itself where the link points. The title attribute 	
+		can be used to make this more clear. Browsers usually show the title text as a tooltip and screenreaders might read 			
+		the title to a blind user.
+----------------------------------------------------------------------------------------------------------------------------------		
+	Inserting Images
+
+		Inserting images in web pages is done by placing an img tag in the HTML code. The <img> tag is an empty tag. Its src 	
+		attribute is used to reference an image file using a relative or absolute path. The syntax is as follows:
+
+		Syntax
+
+			<img src="path_to_image_file" alt="alternative text">
+
+		Making Images Accessible
+
+			Alternative Text
+
+				To add alternate text for an image, use the alt attribute.
+
+					<img src="logo.gif" alt="Logo">
+
+				Alternate text is displayed...
+
+    				When the user's browser does not support images.
+    				As the image is downloading.
+    				When the user hovers over the image with the mouse (in some browsers).
+
+					Alternate text can also be used by screenreaders to describe an image for the visually impaired.
+					
+		Long Descriptions
+
+			If an image depicts something complicated, such as a graph or chart, a long description of the image can be provided 		
+			on a separate page. The longdesc attribute of the <img> tag is used to point to that description.
+			
+				<p><img src="Images/BigMac.jpg" alt="Big Mac Nutrition Information" longdesc="BigMac.html"></p>
+----------------------------------------------------------------------------------------------------------------------------------
+	Unordered Lists
+
+		Unordered lists are rendered as bulleted lists. Take a look at the following code sample: (Look at second.html for code)		
+		
+			The <ul> tag starts an unordered list. Each list item is contained in <li></li> tags. The image below shows how this 
+			code would be rendered (Webucator)
+			
+		Nesting Unordered Lists
+
+			Unordered lists can also be nested. The browsers use indentation and different styles of bullets to display the nested 			lists. The following example shows how this works:
+			
+				<h1>Beatles Lead Singers</h1>
+    			
+				<ul>
+        			<li>Paul McCartney
+            			<ul>
+                			<li>Lady Madonna</li>
+                			<li>Lovely Rita</li>
+                			<li>Eleanor Rigby</li>
+                			<li>Can't Buy Me Love
+                			<ul>
+                        		<li>John and Paul together</li>
+                			</ul>
+                </li>
+                <li>When I'm Sixty-Four</li>
+            </ul>
+        </li>
+        <li>John Lennon
+            <ul>
+                <li>Norwegian Wood (This Bird Has Flown)</li>
+                <li>All You Need Is Love</li>
+                <li>Day Tripper</li>
+                <li>Can't Buy Me Love
+                    <ul>
+                        <li>John and Paul together</li>
+                    </ul>
+                </li>
+                <li>Lucy In The Sky With Diamonds</li>
+            </ul>
+        </li>
+        <li>Ringo Starr
+            <ul>
+                <li>Don't Pass Me By</li>
+                <li>Yellow Submarine</li>
+            </ul>
+        </li>
+        <li>George Harrison
+            <ul>
+                <li>Here Comes The Sun</li>
+                <li>Roll Over Beethoven</li>
+            </ul>
+        </li>
+    </ul>
+----------------------------------------------------------------------------------------------------------------------------------
+	Ordered Lists
+
+		Ordered lists are very similar to unordered lists. They are created with the <ol> tag and, by default, will display list 		
+		items with numbers. Take a look at the following code (see second.html for code)
+		
+		Nesting Ordered Lists
+
+			-Like unordered lists, ordered lists can be nested.
+			-As you can see, ordered lists can have nested unordered lists. The reverse is also true. 
+			
+			<h1>Beatles Lead Singers</h1>
+    	
+			<ol>
+        		<li>Paul McCartney
+            		<ol>
+                		<li>Lady Madonna</li>
+                		<li>Lovely Rita</li>
+                		<li>Eleanor Rigby</li>
+                		<li>Can't Buy Me Love
+                    		<ul>
+                        		<li>John and Paul together</li>
+                    		</ul>
+                		</li>
+                		<li>When I'm Sixty-Four</li>
+            		</ol>
+			</ol>			
+			
+		Start Attribute
+
+			The start attribute is used to specify what number the list should start on. It takes as a value any number. For 		
+			example...
+	
+				<ol start="3">
+    				<li>Paul McCartney</li>
+    				<li>John Lennon</li>
+    				<li>Ringo Starr</li>
+    				<li>George Harrison</li>
+				</ol>
+
+			The start attribute was deprecated in HTML 4, but brought back in HTML5 as there is no great CSS alternative. It is 		
+			supported by all browsers, but if you set your DOCTYPE to XHTML or HTML Strict, your file will not validate. If you 
+			use the new HTML5 DOCTYPE, as we have been recommending, you will have no problems.
+----------------------------------------------------------------------------------------------------------------------------------
+	Definition Lists
+
+		Definition Lists are not as widely used as unordered and ordered lists. The example below is taken from the W3C 		
+		Recommendation (slightly modified).
+	
+		<!DOCTYPE HTML>
+		<html>
+
+			<head>
+
+				<meta charset="UTF-8">
+				<title>Definition List</title>
+
+			</head>
+
+			<body>
+    
+				<h1>Definition List</h1>
+    			
+				<dl>
+				
+        			<dt>Dweeb</dt>
+        				<dd>young excitable person who may mature into a
+            			<em>Nerd</em> or <em>Geek</em></dd>
+        			
+					<dt>Hacker</dt>
+        				<dd>a clever programmer</dd>
+        
+					<dt>Nerd</dt>
+       		 			<dd>technically bright but socially inept person</dd>
+						
+    			</dl>
+			
+			</body>
+
+		</html>
+
+		-The <dl> element contains the definition list. The <dt> elements are the definition terms and the <dd> elements are the 			
+		definition descriptions. 
+----------------------------------------------------------------------------------------------------------------------------------
+	Creating Tables
+
+		-Tables are made up of one or more table rows, which contain one or more table cells. The tag for creating tables is 		
+		<table>. The table row tag is <tr> and the two tags that can create table cells are <td> and <th>. (For a table styled 	
+		without CSS, see second.html)
+		
+		The <th> elements are table header cells. By default, their content will be centered and bolded. The <td> elements are 		
+		table data cells. By default, their content will be plain text and left aligned. The display of tables (background colors, 		borders, column width, row height, etc.) can be controlled with CSS. 
+		
+		Adding a Caption
+
+			The table above has a caption, which is added by inserting the <caption> tag after the open <table> tag:
+
+			<table>
+    
+				<caption>All-time Home Run Record</caption>
+    
+				<tr>...
+----------------------------------------------------------------------------------------------------------------------------------
+	Attributes
+
+		The following tables list attributes that have been deprecated in the current HTML standards. They are presented here for 		
+		backwards compatibility with older browsers. Internet Explorer 7 and earlier do not support all of the latest CSS settings 		that replace these obsolete attributes. Later in this course is a lesson on using CSS for styling. Using CSS is the 	
+		recommended way of styling tables.
+		
+		<table> Attributes
+		
+			Attribute	 	Description
+		
+			width	 		sets the width of the table in pixels or percentage
+			border	 		sets the width of the border of the table
+			cellspacing 	sets the distance between cells in pixels
+			cellpadding 	sets the distance between cell content and the cell border in pixels
+			summary		 	used to provide a longer description of the table for screenreaders
+
+		<tr> Attributes
+		
+		 	Attribute 	Description
+
+			align	 	aligns the content in the cells in the table row horizontally (left, center, or right)
+			valign	 	aligns the content in the cells in the table row vertically (top, middle, or bottom)
+
+		<td> and <th> Attributes
+		 
+			Attribute 	Description
+			
+			align	 	aligns the content in the cells in the table row horizontally (left, center, or right)
+			valign	 	aligns the content in the cells in the table row vertically (top, middle, or bottom)
+			colspan 	indicates the number of columns the cell should span
+			rowspan 	indicates the number of rows the cell should span
+----------------------------------------------------------------------------------------------------------------------------------
+	Merging Cells
+
+		-In HTML tables, all table rows must span the same number of columns and all table columns must span the same number of 	
+		rows.
+		 
+		**-See second.html for colspan & rowspan;
+---------------------------------------------------------------------------------------------------------------------------------
+	Forms
+	
+		How HTML Forms Work
+
+			HTML forms are used for submitting data back to a script on the server for data processing. When a form is submitted, 	
+			the data in the form fields is passed to the server in the form of name-value pairs. Server-side scripts, which can be 			written in several different languages, are used to process the incoming data and return a new HTML page to the 		
+			browser. The page returned to the browser could be anything from a "Thank you for registering" message or a list of 
+			search results generated from a database query.
+			
+			The process is as follows:
+
+		    	1.	The user submits a form. The data is sent to the web server.
+    			2.	A script on the web server processes the form, possibly interacting with the file system, one or more 	
+					databases, a mail server, or any number of other applications.
+    			3.	The script generates an HTML page, which the server returns to the client for display.
+	---------------------------------------------------------------------------------------------------------------------------------
+	The <form> Tag
+
+		HTML forms are created using the <form> tag, which takes two main attributes: action and method.
+
+			The action specifies the URL of the page that processes the form. It is required. The method attribute has two 		
+			possible values: post and get. A basic form tag is shown below:
+
+				<form method="post" action="Register.cfm">
+    				<!--form fields go here-->
+				</form>
+				
+		Get vs. Post
+
+			The value of the method attribute is used to determine how the form data will be passed to the server.
+
+			**get**
+
+				If get is used the data will be appended to the URL as part of a querystring. For example, if the form is filled 		
+				out as follows:	
+		
+				When the user submitted the form, the URL for the new page would read (without the line breaks):
+	
+					Register.cfm?email=ndunn@webucator.com&pw=foobar&flavor=hardChoc&
+        			sprinkles=on&whip=on&container=wafflecone&
+        			requests=I+want+a+really+big+cone%21&discount=20%2
+
+				You'll notice the file name is followed by a question mark, which is followed by several name-value pairs (e.g, 		
+				container=wafflecone) separated by ampersands (&).
+
+				The get method is commonly used by search engines, because it allows the resulting page to be bookmarked.
+				
+			**post**
+
+				When post is used, the name-value pairs are not sent as part of the querystring. Instead they are sent behind the 
+				scenes. This has the advantage of keeping the values hidden from anyone looking over the user's shoulder. Two 
+				other advantages of the post method are:
+
+   					1.It allows for much more data to be submitted (i.e, larger forms).
+    				2.It allows for files to be uploaded to the server.
+
+				As a general rule, you should use post unless you want the user to be able to bookmark or share (e.g, via email) 		
+				the resulting web page.
+
+			Files can be uploaded to the server via the file input type. The tag syntax is:
+			 	
+				<input type="file" name="filename">			---------------------------------------------------------------------------------------------------------------------------------
+	Form Elements
+
+		-This section describes the different form elements that can be used to input data into a form. As you will see, many of 		
+		these elements, but not all, are created with the input tag.
+
+		-Note that in XHTML strict and HTML 4 strict, input, other form controls, and label elements may not be direct children 		
+		of the form element. They must be nested in other block-level elements.
+
+		id and Name Attributes
+
+			-Form fields (also called controls) take both the name attribute and the id attribute. They are used for different 		
+			purposes.
+
+    			-The name attribute is used to hold the value of the field. It is passed to the server as a variable.
+    			-The id attribute is used by CSS and JavaScript to identify a specific element.
+
+		Labels
+
+			Form element labels should be put in <label> tags. Labels can be associated with form elements using two methods:
+
+    			1. Using the for attribute of the <label> to point to the id element of the form element.
+    			2. Wrapping the form element in the <label> tag.
+				
+				**Please refer to Forms.html for these methods.**
+				
+				Submit and Reset Buttons
+
+		Submit and reset buttons are both created with the <input> tag.
+
+			Submit Button
+
+				-A form must have a submit button to be "submittable".
+
+				-Firefox and Internet Explorer both use "Submit Query" as the default text, but this can be changed with the 	
+				value attribute.
+
+					<input type="submit" name="submitbutton" id="submitbutton" value="Register">
+
+				-When a form has a submit button, it can be submitted either by clicking on the button or pressing the Enter key 	
+				when an input element has focus.
+
+				-When a submit button is clicked, the name and value of that button are sent to the server (as a name-value 
+				pair).  This can be useful in the event that a form has multiple submit buttons as the processing
+				page could behave differently depending on which button was clicked.
+
+			Reset Button
+
+				A reset button is used to set all the form fields back to their original values.
+
+					-Firefox and Internet Explorer both use "Reset" as the default text, but this can be changed with the value 
+					attribute.
+					
+						<input type="reset" name="resetbutton" id="resetbutton" value="Clear">
+
+		Hidden Fields
+
+				<input type="hidden" name="discount" id="discount" value="20%">
+
+				-Hidden fields are created with the input tag with the type attribute set to hidden. They are used to pass 		
+				name-value pairs to the server without displaying them to the user. They are sometimes used in multi-page forms 		
+				to keep track of variables from a form on a previous page.
+			
+				-Although the user can't change the value, it could be changed programatically with JavaScript. For example, the 
+				discount might be calculated based on other options the user selected in the form.
+
+		Checkboxes
+
+				Checkboxes are created with the input tag with the type attribute set to checkbox. The default value for a 	
+				checkbox is "on". Although the value of a checkbox can be changed with the value attribute, there is usually no 
+				reason to do so, as the name-value pair only gets sent to the server if the checkbox is checked. In other words, 
+				the script on the server only needs to check for the existence of the variable name to see if the checkbox was 
+				checked or not.
+				
+				**Refer to Forms.html for code syntax**
+				
+		Radio Buttons
+
+			Radio buttons are created with the input tag with the type attribute set to radio. Radio buttons generally come in 
+			groups, in which each radio button has the same name. Only one radio button in the group can be checked at any given 
+			time. Each radio button in the group should have a unique value - the value to be sent to the server if that radio 
+			button is selected. There is often no need to provide ids for radio buttons as they are not usually styled with CSS 
+			and any script code would most likely try to access the whole group and treat it as an array, rather than try to 
+			access a single radio button.
+			
+			 Id Attribute for Radio Buttons
+
+				You many have noticed that form elements such as text fields and checkboxes, the id is usually the same as the 
+				name. They aren't actually related at all, so they don't have to be the same. As stated above:
+
+    				1.The name attribute is used to hold the value of the field. It is passed to the server as a variable.
+    				2.The id attribute is used by CSS and JavaScript to identify a specific element.
+
+				Nonetheless, it's usually easier just to give them the same name, so you can refer to the elements using the same 
+				name in all other files (CSS, JavaScript, etc...).
+
+				For radio buttons, this isn't possible though, because radio buttons in the same set must all have the same name, 
+				but different ids.
+
+				When the form is submitted, the value of the selected button gets sent to the server. So, for example, if we had 			
+				a radio button asking to select the gender ("m" or "f"), selecting "m" would mean the form will send "gender=m"	
+				to the server. However, if we wanted to use JavaScript to autoselect the "m" radio button, we would need to be 
+				able to distinguish it from the "f" radio button - this is where IDs would come in. Essentially, the radio 
+				buttons in the same set need to have different id values.
+
+				**Explanation for this on Webucator Presentation Video**
+				
+		Select Menus
+
+			-Select menus are created with the select tag. The size attribute determines how many options are shown at once.
+
+			-By default, only one option can be selected; however, this can be changed by adding the multiple attribute to the 
+			select tag. The following tag would create a scrollable combo box that showed three options at a time and allowed 	
+			multiple options to be selected:
+
+				<label for="flavor">Flavor:</label>
+				<select name="flavor" id="flavor" size="3" multiple="multiple">
+    				<option value="0" selected="selected"></option>
+    				<option value="choc">Chocolate</option>
+    				<option value="straw">Strawberry</option>
+    				<option value="van">Vanilla</option>
+				</select>
+
+
+			-The select element must contain one or more option elements. The text between the open and close option tags appears 			in the select menu. The value of the value attribute is what gets passed to the server if that option is selected. 
+			
+			-The selected attribute is used to preselect an option.
+
+		Option Groups
+
+			Options can be arranged in groups using the <optgroup> tag. The label attribute is used to set the option group 	
+			heading.
+
+				<label for="flavor">Flavor:</label>
+				<select name="flavor" id="flavor">
+    				<option value="0" selected="selected"></option>
+    				<optgroup label="Soft Flavors">
+        				<option value="softChoc">Chocolate</option>
+        				<option value="softStraw">Strawberry</option>
+        				<option value="softVan">Vanilla</option>
+    				</optgroup>
+    				<optgroup label="Hard Flavors">
+        				<option value="hardChoc">Chocolate</option>
+        				<option value="hardStraw">Strawberry</option>
+        				<option value="hardVan">Vanilla</option>
+        				<option value="hardMint">Mint Chocolate Chip</option>
+        				<option value="hardCC">Cookies &amp; Cream</option>
+    				</optgroup>
+				</select>
+
+		Textareas
+
+			-Textareas are created with the textarea tag. The cols and rows attributes indicate the number of columns and rows 	
+			(in characters) that the textarea should span.
+
+			-An initial value can be entered into the textarea by adding text between the open and close textarea tags. For 	
+			 example,
+	
+				<textarea name="requests" cols="40" rows="6">
+    				Initial value goes here.
+				</textarea>		---------------------------------------------------------------------------------------------------------------------------------
+	HTML Formatting		
+		
+		***Please note that in HTML 4.0 almost all of the tags and attributes covered in this lesson have been deprecated,
+		meaning that, although browsers should continue to support them, developers should stop using them in favor of CSS.
+
+		We strongly recommend that you avoid using the concepts shown in this lesson in favor of CSS. We include it here only to 
+		show how HTML used to be written as you are likely to come across many of these formatting techniques in legacy pages.
+
+		However, there are several reasons to understand how to apply formatting the traditional way (i.e, with HTML tags and 
+		attributes).
+
+    		1. There are many many legacy pages that need to be maintained that use HTML for formatting purposes.
+    		2. Many HTML conversion tools and WYSIWIG HTML editors make use of HTML's formatting tags and attributes.
+    		3. Older browsers do not support or poorly support Cascading Style Sheets.
+---------------------------------------------------------------------------------------------------------------------------------			
+	Simple Formatting Tags
+
+		Tag 		Description
+		
+		<b></b> 	Bold
+		<i></i> 	Italics
+		<u></u> 	Underline
+		<s></s> 	Strikethrough
+---------------------------------------------------------------------------------------------------------------------------------
+	The <font> Tag
+
+		-The <font> tag is used for controlling the size, color, and family (face) of text. The table below shows the main 
+		attributes of the <font> tag.
+
+		Attribute 	Values
+		
+		size	 	number, +number, -number
+		color 		hexadecimal value or color value
+		face 		font name or list of font names
+
+		Here is a simple example:
+
+		<font size="2" color="red" face="Impact">Warning!</font>
+
+		*size*
+
+			Font sizes range from 1 to 7. The default font size in most browsers is 3.
+
+				<font size="2">Hello, world!</font>
+				<font size="+1">How are you, world!</font>
+				<font size="-2">Goodbye, world!</font>
+
+		*color*
+
+			In HTML pages, color can be defined using color names or hexadecimal codes. Different browsers support different sets 			of color names.
+
+			Hexadecimal codes specify the amount of red, green and blue used to make up the color. The values range from 00 		
+			(none) to ff (all). The hexadecimal code format is #rrggbb. For example, #ff00ff translates to all of red, none of 
+			green, and all of blue, resulting in purple.
+	
+			<font color="red">Warning!</font>
+			<font color="#ff0000">Warning!</font>
+		
+		*face*
+		
+			-Unlike most attributes, the face attribute can take a list of values. These values are the names of the fonts that 	
+			should be used to display the content contained by the <font> tag. If the first font listed in the value list is 
+			available on the user's machine, then that font is used; otherwise, if the next font listed is available, that one is 			used; and so on.
+			
+				Syntax
+
+					<font face="value1,value2,value3">text</font>
+	
+					<font face="Arial, Helvetica, sans-serif">Hello!</font>
+					<font face="Times New Roman, Times, serif">Hi!</font>
+					<font face="Courier New, Courier, mono">Hey there!</font>
+		
+			*<basefont>*
+
+				The <basefont> tag is used to set a default font size, color and face for the page. The tag usually appears 		
+				within the <head>, though this is not required by all browsers. The syntax is as follows:
+				
+					<basefont size="5" color="darkblue" face="Comic Sans MS">
+
+				Applying Colors to the Page
+
+					Users can set default colors using browser preferences. The following table shows the colors that are 		
+					initially set for Internet Explorer 6 and Mozilla (e.g., Netscape 6+ and Firefox).
+
+					Color 			Internet Explorer 	Mozilla
+					Background 		System Color	 	white
+					Text	 		System Color 		black
+					Link 			blue 				blue	
+					Visited Link 	purple 				purple
+					Active Link 	unchanged 			red
+
+					These properties can be overridden with attributes in the <body> tag. The table below shows the attributes 	
+					that correspond to the properties above.
+
+					The Background system color is usually white and the Text system color is usually black.
+
+						Property 		Attribute
+			
+						Background 		bgcolor
+						Text	 		text
+						Link	 		link
+						Visited Link 	vlink
+						Active Link 	alink
+
+					<body bgcolor="black" text="white" link="red" vlink="green" alink="orange">
+---------------------------------------------------------------------------------------------------------------------------------
+	Aligning Text
+
+		The <center> Tag
+
+			The <center> tag is used to center lines of text, paragraphs, tables, images, forms, etc.
+	
+				<center>
+					<p>This text is centered.</p>
+					<p>So is this text.</p>
+				</center>
+				
+				<p>This text is not.</p>
+
+		The align Attribute
+
+			The align attribute is used to align the content of an element. It can be applied to many tags, including heading 	
+			tags (e.g, <h1>) and <p>, <div>, <table>, <tr>, <td>, <th>, and <hr> tags. It has been deprecated for all uses except 			with the child elements of the <table> tag.
+
+			Possible values for the align attribute are left, right, center, and justify.
+
+				<p align="right">This text is aligned right.</p>		---------------------------------------------------------------------------------------------------------------------------------

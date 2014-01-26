@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+		<title>Form Template(s)</title>
+		<meta charset= "UTF-8">
+	</head>
+
+	<body>
+	
+		<h1> Form Template</h1>
+		
+		<form method="post/get" action="url/file goes here">
+		
+			<div>
+				<input type="hidden" name="" id="" value="">
+		
+				<label>Username: <input type="text" name="Username" id="Username" value="" size="20" maxlength="40"></label>
+			</div>
+			
+			<div>	
+				<label> Password: <input type="password" name="pw" id="pw" size="10" maxlength="16"></label>
+			</div>
+			
+			<div>
+				<label>E-mail: <input type="text" name="email" id="email" value="" size="20" maxlength="40"></label>
+			</div>
+			
+			<div>	
+				<label>Category:<input type="radio" name="cat" id="cat1" value="cat1"> Category1</label>
+				<label><input type="radio" name="cat" id="cat2" value="cat2"> Category2</label>			
+			</div>	
+			
+			<div>
+			
+				<label>Where did you hear from us?:
+					<select name="referral" id="referral" size="3">
+    					<option value="0" selected="selected">Please Choose:</option>
+    					<option value="value a">option a</option>
+    					<option value="value b">option b</option>
+    					
+    					<optgroup label="Category Goes Here">
+    						<option value="value1">Option 1</option>
+    						<option value="value2">Option 2</option>	
+    						<option value="value3">Option 3</option>
+    					</optgroup>
+					</select>
+				</label>
+				
+			</div>		
+			
+			<div>
+			
+				<label>Comments:<br>
+					<textarea name="comments" id="comments" cols="40" rows="6">
+    				</textarea>
+				</label>
+			
+			</div>
+			
+			<div>			
+				<label>Click to accept our terms:<input type="checkbox" name="terms" id="terms"></label>
+			</div>
+			
+			<div>	
+				<input type="submit" name="submitbutton" id="submitbutton" value="Enter">
+				<input type="reset" name="resetbutton" id="resetbutton" value="Clear">
+			</div>
+			
+		</form>	
+	
+	</body>
+	
+</html>
+	

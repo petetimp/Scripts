@@ -1,0 +1,718 @@
+Advanced CSS
+--------------------------------------------------------------------------------------------------------------------------------------------------
+	Element Flow
+
+		The flow is the way in which elements are laid out. By default, sibling elements are all in the same flow and positioned statically on the 		page; the order elements appear on the page is the same as the order they appear in the code. With CSS, we can move elements into a 	
+		separate flow. This allows us more control over the design of the page and over the layout of our code.
+
+	Position
+
+		The position property is used to determine how an element is positioned. The default value is static. Other options are:
+
+    		absolute
+    		relative
+    		fixed
+			
+	 	Absolute Positioning
+
+			When elements are positioned absolutely, they are removed from the normal flow. As a result, they do not affect the positioning of 	
+			subsequent sibling elements. Elements are positioned absolutely by setting the position property to absolute and specifying one or 
+			more "offset" properties.
+
+			Offset Properties: top, right, bottom, and left
+
+				The "offset" properties are top, right, bottom, and left. Their values can be specified in number of units (e.g, 10px) or 	
+				percentage of the containing block (e.g, 20%). These properties offset the element from its nearest non-statically positioned 
+				containing block element (i.e, with position set to absolute, relative or fixed). If it has no ancestor that is non-statically 
+				positioned, then it is offset from the browser window.
+				
+				Sample code: PositioningAndVisibility/Demos/PositioningAbsolute.html(Webucator)
+
+			**Note that when an inline element is positioned absolutely, it become a block-level element.
+			
+		Relative Positioning
+
+			When elements are positioned relatively, they are positioned relative to where they would normally appear in the flow. Unlike 	
+			absolutely positioned elements, relatively positioned elements do affect the positioning of subsequent sibling elements. Elements are 
+			positioned relatively by setting the position property to relative and specifying one or more "offset" properties as described above 
+			in "Offset Properties: top, right, bottom, and left".
+
+			Code Sample: PositioningAndVisibility/Demos/PositioningRelative.html(Webucator)
+			
+		Fixed Positioning
+
+			Elements with fixed positioning stay in the same position in the browser window even when the page is scrolled. It can be used to keep 			an element (e.g, a navigation menu) on the page at all times.
+
+			The example below uses fixed positioning to keep a home icon that links to the home page in the upper-left hand corner.
+
+			Code Sample: PositioningAndVisibility/Demos/PositioningFixed.html (Webucator)  
+			Z-index
+--------------------------------------------------------------------------------------------------------------------------------------------------
+	Z-index
+
+		The z-index property specifies the stack level of an element on the page compared to other elements in its same flow. It takes a number as	 		a value. The higher an element's z-index, the closer to the user it appears.
+
+		Code Sample: PositioningAndVisibility/Demos/Zindex.html 
+		--------------------------------------------------------------------------------------------------------------------------------------------------
+	Visibility
+
+		The visibility property is used to make an element invisible. Possible values are:
+
+    		visible
+    		hidden
+
+		The major difference between setting an element's visibility to hidden and setting its display to none is that an hidden element still 	
+		affects the layout of the page; whereas an element that has a display of none does not.
+
+	Display
+
+		The display property is used to determine if and how an element appears. The most common values are shown below.
+
+    		block
+    		inline
+    		none
+
+		The most common uses of display are:
+
+    		-To show and hide elements based on user interaction. A common example is a drop-down menu. This dynamic change of style is done with 
+			JavaScript.
+    
+			-To hide elements for certain media. For example, the images might be "turned off" by setting the display to none in a style sheet for 			print.
+    
+			-Converting an inline element such as a link to a block element by setting its display property to block.
+
+			The following example shows how the display property can be used to turn links into block elements..
+
+			Code Sample: PositioningAndVisibility/Demos/LinkButtons.html 	--------------------------------------------------------------------------------------------------------------------------------------------------
+	Float
+
+		Float can be applied to any element that is not absolutely positioned. It is used to specify whether an element should float to the left, 
+		to the right, or not at all. Possible values are listed below.
+
+    		left
+    		right
+    		none
+
+		When an element floats left it will be aligned to the left of the containing element and all subsequent content will align to its right 	
+		until the bottom of the element is reached:
+
+		When an element floats right it will be aligned to the right of the containing element and all subsequent content will align to its left 		
+		until the bottom of the element is reached:
+
+			The code used to create the results above is shown below:
+			
+				Code Sample:PositioningAndVisibility/Demos/Float.html 	--------------------------------------------------------------------------------------------------------------------------------------------------	
+	Clear
+
+		The clear property is used to specify whether content that is flowing to the side of a floating block should drop down beneath that block. 		Possible values are shown below.
+
+    		left
+    		right
+    		both
+    		none
+
+		The following files demonstrate how clear and float can be used in combination with positioning to produce virtually any blocked page 
+		layout.
+
+    		PositioningAndVisibility/Demos/FloatPosition1a.html
+    		PositioningAndVisibility/Demos/FloatPosition1b.html
+    		PositioningAndVisibility/Demos/FloatPosition2a.html
+    		PositioningAndVisibility/Demos/FloatPosition2b.html
+--------------------------------------------------------------------------------------------------------------------------------------------------
+	Resetting Styles
+
+		Web browsers make certain assumptions that can sometimes interfere with layouts. Designers often have to undo or override these defaults. 	
+		It has become a common practice to do so from the outset. This practice has come to be known as "resetting" styles.
+
+		A very simple reset that affects page layout is shown below:
+
+			* {
+    			margin:0;
+    			padding:0;
+    			border:0;
+			}
+
+		Note the universal selector. This effectively does away with all margin, padding and borders for every element including the body, 	
+		headings, lists, and list items. It then becomes the designers responsibility (freedom?) to assign margin, padding and borders.
+
+
+		Resets can get much more sophisticated. CSS Guru Eric Meyer provides a freely downloadable detailed reset style sheet at	 	
+		http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded.
+
+		Using the simple reset we have shown above gives us a blank slate on which to lay out our page. Now we have to make some decisions:
+
+    		Will our design use a fixed width or the full width of the browser?
+    		How many "rows" and "columns" will we have?
+    		What sort of positioning should we use: absolute, relative, fixed or static?
+
+		We address these questions in the sections below by looking at specific layouts. For all layouts, we'll assume we want a header and a 
+		footer.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+	Full Width Layouts
+
+		Pages designed to use the full width of the browser window are often described as having a "fluid" or "liquid" layout. That's because one 
+		or more of the columns must be automatically resized according to the size of the browser window.
+
+		Two-column
+
+			We'll start with the simple two-column layout shown below:
+
+			As you can see, the page has four content areas. Let's take a look at the HTML first:
+
+			Code Sample: CssPageLayout/Demos/fluid-two-column.html(webucator/classfiles) 
+		
+		Three-column
+			
+			Let's see how we would add a third column with the right and left columns fixed and the center column fluid:
+
+				Code Sample: CssPageLayout/Demos/fluid-three-column.html (Webucator/CF)
+				
+			****Most of the material for this reading contains images and instructions.  Please refer to Webucator for the complete reading.**** 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+	Fixed Width Layouts
+
+		Changing our fluid layouts to fixed layouts is easy. In fact, the challenge to the last exercise gets us most of the way there. Instead of 		setting the width to a percentage value, we set it to a fixed-width value in pixels and we set margin to auto:
+
+			#wrapper {
+    			border:1px solid #000;
+    			width:950px;
+    			margin:auto;
+			}
+
+		The screen shots below show the results: The full code can be found in CssPageLayout/Demos/fixed-two-column.css and 
+		CssPageLayout/Demos/fixed-three-column.css. (Webucator)
+
+		A Recommendation on Positioning
+
+			When designing, we recommend the following general principles with regards to positioning choices:
+
+    			Try to layout the page using static positioning, which is the default. In this case, you'll rely entirely on float and the box 
+				model (padding, margin, and border) to lay out your page.
+    
+				If static positioning doesn't work (e.g, you need to have overlapping elements), try relative positioning first.
+    
+				Finally, use absolute positioning in conjunction with the other forms of positioning and only when you need to have an element 	
+				positioned in an exact location.
+
+		Other Methods of Layout
+
+			There are many other ways to create multi-column layouts, each with its own advantages and disadvantages. We feel that the method 
+			we've laid out here is a good choice; however, it does have its disadvantages:
+
+    		Meaningful markup: One of the advantages of CSS is that it makes it possible to structure HTML in a logical way. Ideally, you 
+			shouldn't have to throw in extra tags for formatting purposes. The methodology we show here makes a small compromise on this in two 
+			ways:
+        
+					1. The wrapper divs used to create "rows" and to apply backgrounds to columns are there for formatting purposes only. There is 					   no other reason to structurally combine the individual columns in the "row".
+        
+					2. The "clearer" div contains no content at all. It's only there for formatting purposes.
+    
+			Content order: In the three-column layout, we put both the menu and the sidebar before the main content. This is counter-intuitive as 		
+				they don't show up on the page in that order. If a screenreader were to read the page, it wouldn't know to read the main content 	
+				area before it read the sidebar. Likewise, search engines might place more importance on words that show up earlier in the source 
+				code. We've had to push those words down the page to achieve the layout we want.
+
+			The good news is that the other methodologies use the same basic CSS properties you have learned to use here. So if you decide that 
+			you can't deal with either of the two compromises we've made above, you should be able to pick up the other methodologies relatively 	
+			easily.
+
+			One that we recommend is know as the Holy Grail. This methodology uses less meaningless markup (i.e, markup for formatting purposes 
+			only) and it doesn't compromise on content order. However, it makes other compromises:
+
+    			-It requires CSS hacks to make it work in Internet Explorer 6 and 7. See 	
+				http://www.gerd-riesselmann.net/development/the-holy-grail-css-layout-fix-for-ie7 for a cross-browser working example.
+    		
+				-It doesn't allow for backgrounds that flow to the bottom of the "row".
+    			 It's more difficult to modify and maintain. For example, to add padding to one column, you need to adjust multiple declarations 	
+				 in the code. With the methodology we show here, you simply change the value of the appropriate padding property.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+	What is CSS Shorthand?
+
+		A CSS shorthand property is a property that can take multiple values, with each value relating to a different regular CSS property. Values 		are separated by spaces as shown below:
+
+		Syntax
+			selector {
+    			property: value1 value2 value3;
+			}
+
+		In this lesson, we will cover the following shorthand properties:
+
+    		margin
+    		padding
+    		border
+        	border-left
+        	border-right
+        	border-top
+        	border-bottom
+        	border-color
+        	border-style
+        	border-width
+    		list-style
+    		background
+    		font
+
+		Benefits of Using CSS Shorthand
+
+			There are two major benefits of using CSS shorthand properties:
+
+    			1.Less code for you to write.
+    			2.Smaller files for the user to download.
+
+		Value Order of CSS Shorthand Properties
+
+			Some properties, such as border, allow you to rearrange values without affecting the display of the style. For example:
+
+				selector {
+    				border: 1px solid black;
+				}
+
+				...will display the same as...
+
+				selector {
+    				border: black 1px solid;
+				}
+
+			However, for other properties, such as padding and margin, order does matter as we'll see later in the lesson.	
+			
+		CSS Initial Values
+
+			Many CSS properties have initial values, which are specified in the CSS 2.0 specificiation. Knowing how CSS initial values affect your 			styles will help you make your CSS shorthand code even shorter by omitting them from a declaration.
+
+			Omitting values from a shorthand property declaration will result in one of the following:
+
+    			1.CSS inserts a default called an initial value.
+    			2.The omitted value may be inherited from elsewhere in your CSS.
+
+			As an example, the initial values for the border property are shown below:
+
+				CSS Initial Values for the border Property
+				 
+				Property	 	Initial Value
+
+				border-width 	medium
+				border-style 	none
+				border-color 	inherited from a color property
+
+			Note that the initial value for the border style is "none". No border will appear unless you change this value even if you assign a 	
+			border-width and border-color.
+
+			The following example demonstrates how you can remove values from the border property relying on CSS initial values as well as styles			 			inherited from other property values.
+
+			Code Sample: CssShorthand/Demos/OmittingPropertyValues.html 	--------------------------------------------------------------------------------------------------------------------------------------------------
+	Shorthand Margin and Padding
+
+		The margin and padding shorthand properties interpret values in the same way:
+
+    		One value: sets all four sides uniformly.
+    		Two values: first value sets top and bottom, second value sets right and left.
+    		Three values: first value sets top, second value sets both right and left, third value sets bottom.
+    		Four values: sets the top, right, bottom and left, respectively.
+
+			Syntax
+				selector {
+    				padding: AllSides;
+				}
+
+				selector {
+    				padding: TopAndBottom RightAndLeft;
+				}
+
+				selector {
+    				padding: Top RightAndLeft Bottom;
+				}
+
+				selector {
+    				padding: Top Right Bottom Left;
+				}
+
+			The initial value for each margin and padding property is 0.
+
+			The following example demonstrates how you can use the shorthand properties for padding.
+			
+				Code Sample: CssShorthand/Demos/Padding.html 	--------------------------------------------------------------------------------------------------------------------------------------------------
+	Shorthand Border
+
+		The shorthand for border is shown below:
+
+		Syntax
+			selector {
+    			border: border-width border-style border-color;
+			}
+
+			The shorthand for border can also be applied individually to border-top, border-right, border-bottom and border-left. For example, the 			following syntax demonstrates the shorthand structure applied to a border-top property.
+
+		Syntax
+			selector {
+    			border-top: border-width border-style border-color;
+		}
+
+		CSS Initial Values for the border Property
+		
+			Property	 	Initial Value
+			border-width 	medium
+			border-style 	none
+			border-color 	inherited from a color property
+
+		The following example demonstrates the use of the border shorthand property.
+
+			Code Sample: CssShorthand/Demos/Border.html
+
+		Other Border Shorthand Properties
+
+			In the list of available shorthand properties, you may have noticed border-color, border-style, border-width. These shorthand 		
+			properties shouldn't be confused with the border property because their structure is different. The structure for these properties is 	
+			similar to margin and padding in that you set the value for each side.
+
+			The code below shows the syntax for border-color, border-style, and border-width:
+
+			Syntax
+				selector {
+   	 				border-color: Top Right Bottom Left;
+    				border-style: Top Right Bottom Left;
+    				border-width: Top Right Bottom Left;
+				}				--------------------------------------------------------------------------------------------------------------------------------------------------
+	Shorthand Backgrounds
+
+		The background property is used to set the individual properties for background-color, background-image, background-repeat,
+		background-attachment and background-position. Note that order matters (although some browsers may show some leniency).
+
+		Syntax
+
+			selector {
+    			background: background-color background-image background-repeat background-attachment background-position;
+			}
+	
+		CSS Initial Values for the background Property
+		 
+			Property 				Initial Value
+			
+		 	background-color 		transparent
+		 	background-image 		none
+		 	background-repeat 		repeat
+		 	background-attachment 	scroll
+		 	background-position 	0% 0%
+
+		When using shorthand for the background property, there are some things to be aware of:
+
+    		The background color renders first then the background image is placed over the color. When we cover CSS Background Tricks, we'll see 
+			that this can be exploited.
+    
+			You can use background in place of background-color to set the background color (e.g, background: red;).
+    		
+			You can use background in place of background-image to set the background image (e.g, background: url(bg.gif);).
+
+			The following example demonstrates the background shorthand property.
+
+				Code Sample: CssShorthand/Demos/Background.html 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+	Shorthand Fonts
+
+		The font property, which is well supported, is used to set the individual properties for font-style, font-variant, font-weight, font-size, 		line-height and font-family.
+
+		Syntax
+			selector {
+    		font: font-style font-variant font-weight font-size/line-height font-family;
+		}
+
+		When using shorthand for the font property, note that:
+
+    		-Order matters.
+    		
+			-You must set values for font-size and font-family in that order.
+    		
+			-When setting a font name with spaces in the name, e.g. Times New Roman, you must enclose it within quotation marks.
+    		
+			-Values for font-size and font-family are required. All other values are optional. If omitted; the initial values will be used.
+        	
+			-Initial values can trick you here. If you use the font property for h1, which is bold by default, but you don't assign a value for 	
+			the font-weight portion, the initial value of "normal" will be used and the h1 will not appear bold.
+    		
+			-When setting the font-size and line-height in the same declaration, they must be side by side with a slash between the two values as 	
+			shown below:
+    
+		Syntax
+    		selector {
+                    font: font-size/line-height;
+            }
+
+			CSS Initial Values for the font Property
+			 
+			 Property	 	 Initial Value
+			 
+			 font-style 	 normal
+			 font-variant  	 normal
+			 font-weight     normal
+			 font-size	 	 medium
+             line-height     normal
+             font-family 	 browser default
+
+		Code Sample: CssShorthand/Demos/Font.html 		--------------------------------------------------------------------------------------------------------------------------------------------------
+	Shorthand Lists
+
+		The list-style property is used to set the list-style-type, the list-style-position and the list-style-image properties. The order of 		
+		values is not important.
+
+		Syntax
+
+			selector {
+    			list-style: list-style-type list-style-position list-style-image;
+			}
+
+		CSS Initial Values for the list-style Property
+		 
+		 Property		 		Initial Value
+		 list-style-type	 	disc/decimal
+		 list-style-position 	outside
+		 list-style-image	 	none
+
+		Code Sample: CssShorthand/Demos/ListStyle.html 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+	Menus as Lists
+
+		***Once again this reading contains a lot of instructions and pictures.  Look at webucator or book for full reading***
+--------------------------------------------------------------------------------------------------------------------------------------------------
+	CSS Vertical Menu
+
+		Vertical menus are created in much the same way, but they're even easier. The steps below show how to create a menu that looks like this: 
+			***Once again this reading contains a lot of instructions and pictures.  Look at webucator or book for full reading***
+--------------------------------------------------------------------------------------------------------------------------------------------------
+	CSS Dynamic Menus
+
+		Dynamic menus have long been popular on the web. Until relatively recently, it was necessary to use JavaScript to create these menus. The 	
+		wider support of the :hover pseudo-class changes that. In this section, we'll show you how to create dynamic menus using pure CSS.
+
+		The dynamic menus shown in this lesson will not work in Internet Explorer 6 and earlier. To create expanding menus for IE 6 and earlier, 	
+		you will most likely have to use JavaScript.
+		
+		CSS Dropdown Menu
+
+			So far, we have only looked at how we can use CSS to change the display of single-level menus. But what happens when we introduce a 	
+			second level of choices using a nested list. The code sample below shows the same horizontal menu we saw before, but with the addition 			of a nested list:
+
+		CSS Flyout Menu
+
+			Let's now take a look at creating a flyout menu, which is very similar to creating a dropdown menu. The code sample below shows the 		
+			vertical menu we saw before, but with the addition of several nested lists:
+
+			Code Sample: CssListMenus/Demos/CssMenu-vertical-nested.html 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+	CSS Sprites
+
+		A CSS sprite is an image file that contains several graphics used on a web page. By showing different parts of the sprite in different 	
+		locations, it appears that there are several different images, but they are all contained in a single file, which translates to a single 
+		download.
+
+		As a simple example, let's look at the images we used for tabbed navigation earlier. Here they are again (magnified): (Webucator)
+
+		Instead of having three different images, let's combine these into a single image (magnified below):(Webucator)
+
+		Now let's see how we can play with the background positioning to make use of this single tabSprite.gif image rather than the three 	
+		separate images.
+
+	Code Sample: CssBackgroundTricks/Demos/tabbedMenus-sprite.html
+
+		---- C O D E   O M I T T E D ----
+    	#mainMenu a {
+        	display:block;
+        	padding:10px;
+        	text-decoration:none;
+        	background:transparent url(Images/tabSprite.gif) 0px 0px repeat-x;
+        	color:#fff;
+        	text-align:center;
+    	}
+     
+    	#mainMenu a:hover {
+        	color:#333;
+        	background-position:0px -37px;
+    	}
+     
+    	#mainMenu a:active {
+        	color:#fff;
+        	background-position:0px -74px;
+    	}
+		---- C O D E   O M I T T E D ----
+
+		Things to notice:
+
+    		1. In the rule for #mainMenu a, we have changed the background image to Images/tabSprite.gif and added positioning of 0px 0px. That's 	
+			because we want the link state to show the top portion of our tabSprite image.
+			
+    		2.In the rule for #mainMenu a:hover, we have replaced the rule for background with background-position:0px -37px;. That's because we 	
+			inherit the background image from the #mainMenu a, but we want to bump it up 37 pixels so that it shows the middle portion of the 
+			image.
+    
+			3.We do the same thing with the rule for #mainMenu a:active, but this time we bump it up 74 pixels.
+
+			-The more graphic heavy a page is, the more it can benefit from using CSS sprites
+--------------------------------------------------------------------------------------------------------------------------------------------------
+	Laying out the Questions
+
+		Most forms can be thought of as a series of questions:
+
+    		What is your first name?
+    		What is your last name?
+    		What company do you work for?
+
+		But instead of being laid out as questions, they are presented as answer spaces (form controls) preceded by labels:
+
+    		First Name: __________________________
+    		Last Name: __________________________
+    		Company: __________________________
+
+		So, in creating an HTML page, it makes sense to use an ordered list. In fact, let's start with that:
+
+		The code for this page is shown below:
+
+			Code Sample: CssForms/Demos/JobApplication1.html
+			
+		As you can see, there is no CSS in this file. It's a simple HTML file split into separate sections of pseudo-questions, which are 
+		presented in ordered lists.
+
+		The pseudo-questions will become our form labels.
+--------------------------------------------------------------------------------------------------------------------------------------------------		
+	Creating the Form
+
+		Now we'll begin creating the form. We won't add the form controls just yet. First, we want to capture the structure within a form:
+
+			Code Sample:CssForms/Demos/JobApplication2.html 
+			
+		The fieldset tag is used to group like form fields. The legend tag is not required in a fieldset, but it is usually a good idea to include 		it. It provides a title or heading for the grouped elements.
+
+		Now let's add the form fields:
+		
+		Code Sample: CssForms/Demos/JobApplication3.html
+		
+	Adding the Form Fields
+
+		The page still uses all the default HTML styles. The result is shown below:
+
+			Our form is now well structured so that a person viewing it in a browser or using an accessibility device such as a screen reader 	
+			would be able to follow it easily. A few things to note:
+
+    			-We have placed most of the "questions" in label tags and used the for attribute to tie them to their form fields.
+    			
+				-We have wrapped the radio buttons with their labels in label tags and put the associated questions in span tags, which we have 
+				 given a "label" class so that we can style them later.
+    			
+				-We have used the title attribute on all the form fields and assigned it a descriptive value. This is for accessibility purposes. 	
+			
+				-Though most accessibility devices will use the label tag to provide information about the form control, some rely on the 
+				control's title attribute.
+    
+				-We have added id attributes to the main fieldsets as hooks for our style sheet.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+	Quirks Mode
+
+		Modern browsers have at least two modes in which they can display content:
+
+    		1.Standards-compliant mode
+    		2.Quirks mode
+
+		In standards-compliant mode, the browser does its best to display the page according to the latest CSS standards. In quirks mode, the 	
+		browser displays the page as if it were an older version of the same browser. The purpose of quirks mode is to make pages that were 
+		designed for the old browsers display the same in the newer browsers.
+
+		You won't find much difference between quirks mode and standards-compliant mode in Mozilla, Opera or Safari, but you may see big 		
+		differences in Internet Explorer.
+
+		Turning Off Quirks Mode
+
+			By default, quirks mode is on. It can be turned off by adding the correct DOCTYPE declaration at the top of the HTML page. The 
+			following DOCTYPE declarations will turn on standards-compliant mode for all modern browsers:
+
+				<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+				<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+ 				<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 				<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+			One gotcha in Internet Explorer is that quirks mode is always enabled if you include an XML declaration (<?xml version="1.0"?>), so we 			recommend you do not include one.
+
+			Quirks mode provides an excellent means of testing how pages will look on different browser versions.
+
+		Design Strategy
+
+			When designing your pages, we recommend you use the following strategy:
+
+    			-Design for the most standards-compliant browsers first (e.g, Firefox).
+    
+				-Check your pages in the latest version of Internet Explorer and fix any bugs. We'll discuss the best way to isolate this code 	
+				 shortly.
+    
+				-Check your pages in Internet Explorer using quirks mode by temporarily cutting the DOCTYPE declaration and fix any bugs.
+
+				-Depending on your need to support other browsers, you may wish to repeat steps two and three on those browsers as well.
+--------------------------------------------------------------------------------------------------------------------------------------------------			
+	Internet Explorer Conditional Statements
+
+		Internet Explorer provides a way of adding conditional statements that allow the designer to specify which version(s) of the browser 
+		should display certain sections. These conditional statements appear as simple HTML comments to other browsers (e.g, Firefox) and are 
+		therefore ignored. This can be very useful for addressing CSS bugs in older versions of Internet Explorer without having any impact on 
+		other browsers.
+
+		The syntax is shown below.
+
+			Syntax
+
+		<!--[if IE 7]>
+    		HTML Code only shows up on Internet Explorer 7
+		<![endif]-->
+
+		As you can see, the beginning if statement starts with the beginning of an HTML comment (<!--) and the endif statement ends with the end 		
+		of an HTML comment (-->), so all other browsers view the whole contents as a comment and do not render any of the contained code.
+
+		The code shown above will only be displayed in Internet Explorer 7, but you can use operators to specify multiple versions that will 	
+		display a block of code. The operators are shown below:
+
+					Conditional Operators
+ 		
+			Operator 	Description 			Example
+			! 			not 					<!--[if ! IE 7]>
+			lt 			less than 				<!--[if lt IE 7]>
+			gt	 		greater than 			<!--[if gt IE 7]>
+			lte 		less than or equal 		<!--[if lte IE 7]>
+			gte 		greater than or equal 	<!--[if gte IE 7]>
+
+		Note that these conditional comments can not be embedded within CSS. The following is invalid:	
+	
+			<style type="text/css">
+				.MyStyle {
+    				background-color: red;
+    			<!--[if lt IE 7]>
+       	 			background-color: blue;
+    			<![endif]-->
+				}
+			</style>
+
+		You would instead structure this as follows:
+	
+			<style type="text/css">
+				.MyStyle {
+    				background-color: red;
+				}
+			</style>
+ 
+			<!--[if lt IE 7]>
+
+				<style type="text/css">
+					.MyStyle {
+    				
+						background-color: blue;
+					}
+				</style>
+
+			<![endif]-->
+
+		The following example shows how you might structure an HTML page using Internet Explorer's conditional comments to deal with IE-specific 	
+		bugs.
+
+			Code Sample: BrowserBugs/Demos/ConditionalCommentsStructure.html
+
+		The advantage of such a structure is that it separates the CSS hacks from the main style sheet, so main.css should standalone as a nice 	
+		clean CSS file that works great with the browsers that support the standard well.
+
+		In the following section, we'll look at some common browser bugs and use what we have learned in this section to address them.
+			*****Browser bugs on webucator*****
+--------------------------------------------------------------------------------------------------------------------------------------------------	
+**************************************************************************************************************************************************
+For the remaining/missing sections in 'Advanced CSS' please refer to the webucator readings.
+**************************************************************************************************************************************************						

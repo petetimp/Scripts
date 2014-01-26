@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Browser to Codecademy Conversion Example</title>
+<script type="text/javascript" src="file:///Z|/Html Docs/lib.js"></script>
+<script>
+	//Under Codecademy 1.'Review of Functions and loops' 1.4.'Nested functions and loops'
+	function multiplyBy10(number) {
+		var elem= document.getElementById("output");
+		elem.innerHTML+=number*10+"<br>";
+	}
+	
+	function multiplesOf10(limit) {
+		for(x=1; x<=limit; x++){
+			multiplyBy10(x);
+		}
+	}
+	function factorial(n) {
+  		if (n === 0) {
+    		return 1;
+  		}
+  		return n * factorial(n - 1);
+	}
+	observeEvent(window,"load",function() {
+		multiplesOf10(14);
+	 	var elem=document.getElementById('output2');
+		elem.innerHTML=factorial(10);
+		});
+</script>
+</head>
+
+<body>
+<output id="output"></output>
+<output id="output2"></output>
+
+
+</body>
+</html>

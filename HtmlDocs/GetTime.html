@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function startTime()
+{
+var today=new Date();
+var h=today.getHours();
+var m=today.getMinutes();
+var s=today.getSeconds();
+// add a zero in front of numbers<10
+m=checkTime(m);
+s=checkTime(s);
+var amPm=AMorPM(h);
+h=convertHour(amPm,h);
+document.getElementById('txt').innerHTML=h+":"+m+":"+s+" "+amPm;
+t=setTimeout(function(){startTime()},500);
+}
+function convertHour(amPm,hour){
+	if (amPm=="PM"){
+		hour=hour-12;
+	}
+	if (hour===0){
+		hour=12;
+	}
+	return hour;
+}
+function AMorPM(hour){
+	var AMPM;
+	if(hour >=	0 && hour < 12){
+		AMPM="AM";
+	}else{
+		AMPM="PM";
+	}
+	return AMPM;
+}
+function checkTime(i)
+{
+if (i<10)
+  {
+  i="0" + i;
+  }
+return i;
+}
+
+</script>
+</head>
+
+<body onload="startTime()">
+<div id="txt"></div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style>
+	#loadingtext{
+		font-size: xx-large;
+		width:5em;
+		position:relative;
+		left:50%;
+		top:50%;
+		margin-left:-2.5em;
+	}
+	#animationContainer {
+		position:relative;
+		text-align:left;
+		height:90%;
+		width:85%;
+		margin:auto;
+	}
+</style>
+<script>
+function observeEvent(target, eventName, observerFunction, useCapture){
+	//setting useCapture to true will not affect IE8 and earlier
+	if (target.addEventListener) {
+		target.addEventListener(eventName, observerFunction, useCapture);
+	} else if (target.attachEvent) {
+		target.attachEvent("on" + eventName, observerFunction);
+	}
+}
+function getCurrentStyle(elem,property) {
+	if (window.getComputedStyle) {
+		var	computedStyle = getComputedStyle(elem,null);
+		return computedStyle[property];
+	} else if (elem.currentStyle) {
+		return elem.currentStyle[property];
+	}
+}
+function subtractingDots(){
+	var loadingText= document.getElementById("loadingtext");
+		loadingText.innerHTML = "Loading......";
+	var subtractPeriod=setInterval(function(){
+	var	length=loadingText.innerHTML.length;	
+		loadingText.innerHTML = loadingText.innerHTML.substring(0,length-1);
+			if (loadingText.innerHTML.indexOf(".") == -1){
+					clearInterval(subtractPeriod);
+					addingDots(loadingText);
+			}
+		},100);
+}
+function addingDots(loadingText){
+	var startLength=loadingText.innerHTML.length;
+	var addPeriod=setInterval(function(){
+			loadingText.innerHTML = loadingText.innerHTML + ".";
+			if (loadingText.innerHTML.length== startLength+6){
+					clearInterval(addPeriod);
+					subtractingDots(loadingText);
+			}
+		},100);
+}
+function moveDiv(div) {
+		var x=25,y=25;
+		var left, top, leftStyle, topStyle, devDiv;
+		if (Math.random() < 0.5) {
+			x = -x;
+		}
+		if (Math.random() < 0.5) {
+			y = -y;
+		}
+		left = parseInt(getCurrentStyle(div,"left"));
+		top = parseInt(getCurrentStyle(div,"top"));
+		
+		if (top > 95){ 
+			if(y>0){
+				y=-y;
+			}
+		}
+		if (left > 95){
+			if(x>0){
+				x=-x;
+			}
+		}
+		if(left < 15){
+			if(x<0){
+				x=Math.abs(x);
+			}
+		}
+		if(top < 5){ 
+			if(y<0){
+				y=Math.abs(y);
+			}
+		}
+		div.style.left = (left + x) + "%";
+		div.style.top = (top + y) + "%";
+		
+		leftStyle=getCurrentStyle(div,"left");
+		topStyle=getCurrentStyle(div,"top");
+		
+		devDiv=document.getElementById("devDiv");
+		//devDiv.innerHTML="The loading text has a left style of " + leftStyle + " and a top style of " + topStyle + ".  Left=" + left + ".  Top=" + top;
+	}
+observeEvent(window, "load", function(){
+	var loadingText=document.getElementById("loadingtext");
+	subtractingDots();
+	setInterval(function() { moveDiv(loadingText) },200);	
+});
+</script>
+
+</head>
+
+<body>
+<div id="animationContainer">
+	<div id="loadingtext"></div>
+    <div id="devDiv"></div>   
+</div>
+ 
+</body>
+</html>
